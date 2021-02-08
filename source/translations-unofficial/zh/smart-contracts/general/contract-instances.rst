@@ -15,22 +15,13 @@ Smart contract instances
      be in Wasm or Rust or perhaps pseudocode.
    - Consider having a picture that explains the relationship between modules and instances.
 
-A **smart contract instance** is a smart contract module together with a
-specific state and an amount of GTU tokens.
-Multiple smart contract instances can be created from the same module.
-For example, for an :ref:`auction <auction>` contract, there could be multiple instances, each
-one dedicated to bidding for a specific item and with its own participants.
+**智能合约实例**是智能合约模块以及特定状态和GTU令牌量。可以从同一模块创建多个智能合约实例。例如，对于：ref:`auction<auction>`合同，可以有多个实例，每个实例都专门用于对特定项目进行投标，并有自己的参与者。
 
-Smart contract instances can be created from a deployed :ref:`smart contract
-module<contract-module>` via the ``init`` transaction which invokes the
-requested function in the smart contract module. This function can take a
-parameter.
-Its end result is required to be the initial smart contract state of the
-instance.
+可以通过调用智能合约模块中请求的函数的init事务从部署的：ref:`Smart contract module<contract module>`创建智能合约实例。此函数可以接受一个参数。它的最终结果必须是实例的初始智能合约状态。
 
 .. note::
 
-   A smart contract instance is often just called an *instance*.
+   智能合约实例通常称为*实例*。
 
 .. graphviz::
    :align: center
@@ -67,42 +58,27 @@ instance.
 State of a smart contract instance
 ==================================
 
-The state of a smart contract instance consists of two parts, the user-defined
-state and the amount of GTU the contract holds, i.e., its *balance*. When
-referring to state we typically mean only the user-defined state. The reason for
-treating the GTU amount separately is that GTU can only be spent and
-received according to rules of the network, e.g., contracts cannot create
-or destroy GTU tokens.
+智能合约实例的状态由两部分组成，用户定义的状态和合约持有的GTU数量，即其余额。当提到状态时，我们通常只指用户定义的状态。单独处理GTU金额的原因是，GTU只能根据网络规则使用和接收，例如，合同不能创建或销毁GTU令牌。
 
 .. _contract-instances-init-on-chain:
 
 Instantiating a smart contract on-chain
 =======================================
 
-Every smart contract must contain a function for creating smart contract
-instances. Such a function is referred to as the *init function*.
+每个智能合约都必须包含一个用于创建智能合约实例的函数。这样的函数称为init函数。
 
-To create a smart contract instance, an account sends a special transaction with
-a reference to the deployed smart contract module and the name of the
-init function to use for instantiation.
+要创建智能合约实例，帐户将发送一个特殊事务，其中包含对已部署智能合约模块的引用和用于实例化的init函数的名称。
 
-The transaction can also include an amount of GTU, which is added to the balance
-of the smart contract instance. A parameter to the function is supplied as part
-of the transaction in the form of an array of bytes.
+该事务还可以包括GTU的金额，该金额被添加到智能合约实例的余额中。函数的参数以字节数组的形式作为事务的一部分提供。
 
-To summarize, the transaction includes:
+总而言之，交易包括：
 
-- Reference to the smart contract module.
-- Name of the init function.
-- Parameter to the init function.
-- Amount of GTU for the instance.
+- 智能合约模块的参考
+- 初始化函数的名称
+- 初始化函数的参数
+- 实例的GTU数量
 
-The init function can signal that it does not wish to create a new instance
-with those parameters. If the init function accepts the parameters, it sets
-up the initial state of the instance and its balance. The instance is given an
-address on the chain and the account who sent the transaction becomes the owner
-of the instance. If the function rejects, no instance is created and only the
-transaction for attempting to create the instance is visible on-chain.
+init函数可以发出信号，表示它不希望使用这些参数创建新实例。如果init函数接受这些参数，它将设置实例的初始状态及其平衡。实例在链上被赋予一个地址，发送事务的帐户成为实例的所有者。如果函数拒绝，则不会创建任何实例，并且只有尝试创建实例的事务在链上可见。
 
 .. seealso::
 
@@ -112,16 +88,13 @@ transaction for attempting to create the instance is visible on-chain.
 Instance state
 ==============
 
-Every smart contract instance holds its own state which is represented on-chain
-as an array of bytes. The instance uses functions provided by the host
-environment to read, write and resize the state.
+每个智能合约实例都有自己的状态，在链上表示为字节数组。实例使用主机环境提供的函数来读取、写入和调整状态大小。
 
 .. seealso::
 
    See :ref:`host-functions-state` for a reference of these functions.
 
-Smart contract state is limited in size. Currently the limit on smart contract
-state is 16KiB.
+智能合约状态的大小是有限的。目前智能合约状态的限制是16KiB。
 
 .. seealso::
 
@@ -130,19 +103,16 @@ state is 16KiB.
 Interacting with an instance
 ============================
 
-A smart contract can expose zero or more functions for interacting with an
-instance, referred to as *receive functions*.
+智能合约可以公开零个或多个与实例交互的函数，称为接收函数。
 
-Just like with init functions, receive functions are triggered using
-transactions, which contain some amount of GTU for the contract and an argument
-to the function in the form of bytes.
+与init函数一样，receive函数是使用事务触发的，事务包含契约的一些GTU和字节形式的函数参数。
 
-To summarize, a transaction for smart-contract interaction includes:
+总之，智能合约交互的事务包括：
 
-- Address to smart contract instance.
-- Name of the receive function.
-- Parameter to the receive function.
-- Amount of GTU for the instance.
+- 智能合约实例的地址
+- 接收函数的名称
+- 接收函数的参数
+- 实例的GTU数量
 
 .. _contract-instance-actions:
 
@@ -154,65 +124,50 @@ Logging events
    Explain what events are and why they are useful.
    Rephrase/clarify "monitor for events".
 
-Events can be logged during the execution of smart contract functions. This is
-the case for both init and receive functions. The logs are designed for
-off-chain use, so that actors outside of the chain can monitor for events and
-react to them. Logs are not accessible to smart contracts, or any other actor on
-the chain. Events can be logged using a function supplied by the host
-environment.
+可以在执行智能合约功能期间记录事件。init和receive函数都是这样。日志是为链外使用而设计的，因此链外的参与者可以监视事件并对其作出反应。智能合约或链上的任何其他参与者都无法访问日志。可以使用主机环境提供的函数记录事件。
 
 .. seealso::
 
    See :ref:`host-functions-log` for the reference of this function.
 
-These event logs are retained by bakers and included in transaction summaries.
+这些事件日志由bakers保留并包含在事务摘要中。
 
-Logging an event has an associated cost, similar to the cost of writing to the
-contract's state. In most cases it would only make sense to log a few bytes to
-reduce cost.
+记录事件有一个相关的成本，类似于写入合同状态的成本。在大多数情况下，只有记录几个字节才能降低成本。
 
 .. _action-descriptions:
 
 Action descriptions
 ===================
 
-A receive function returns a *description of actions* to be executed by
-the host environment on the chain.
+receive函数返回要由链上的主机环境执行的操作的描述。
 
-The possible actions that a contract can produce are:
+合同可能产生的行为有：
 
-- **Accept** is a primitive action that always succeeds.
-- **Simple transfer** of GTU from the instance to the specified account.
-- **Send**: invoke receive function of the specified smart contract instance,
-  and optionally transfer some GTU from the sending instance to the receiving
-  instance.
+- **接受**是一个总是成功的原始操作
+- GTU从实例到指定帐户的**简单转移**
+- **Send**：调用指定智能合约实例的receive函数，可以选择将一些GTU从发送实例转移到接收实例。
 
-If an action fails to execute, the receive function is reverted, leaving
-the state and the balance of the instance unchanged. However,
+如果某个操作未能执行，则会还原receive函数，使实例的状态和余额保持不变。然而，
+- 触发（不成功的）接收函数的事务仍然添加到链中，
+- 并且交易成本，包括执行失败操作的成本，从发送帐户中扣除。
 
-- the transaction that triggers the (unsuccessful) receive function is still added to the chain, and
-- the transaction cost, including the cost of executing the failed action,
-  is deducted from the sending account.
-
-Processing multiple action descriptions
+处理多个动作描述
 ---------------------------------------
 
-You can chain action descriptions using the **and** combinator.
-An action-description sequence ``A`` **and** ``B``
+可以使用和组合器来链接动作描述。动作描述序列``A``**和**``B``
 
-1) Executes ``A``.
-2) If ``A`` succeeds, executes ``B``.
-3) If ``B`` fails the whole action sequence fails (and the result of ``A`` is reverted).
+1) 执行``A``
+2) 如果``A成功，则执行``B``
+3) 如果``B``失败，则整个操作序列失败（并且``A``的结果被还原）
 
-Handling errors
+处理错误
 ---------------
 
-Use the **or** combinator to execute an action in case that a previous action fails.
-An action description ``A`` **or** ``B``
+如果前一个操作失败，请使用``或``组合器执行操作。动作描述``A``或``B``
 
-1) Executes ``A``.
-2) If ``A`` succeeds, stops executing.
-3) If ``A`` fails, executes ``B``.
+1) 执行``A``
+2) 如果成功，则停止执行
+3) 如果``A``失败，则执行``B``
 
 .. graphviz::
    :align: center
@@ -239,7 +194,4 @@ An action description ``A`` **or** ``B``
    See :ref:`host-functions-actions` for a reference of how to create the
    actions.
 
-The whole action tree is executed **atomically**, and either leads to updates
-to all the relevant instances and accounts, or, in case of rejection, to payment
-for execution, but no other changes. The account which sent the initiating
-transaction pays for the execution of the entire tree.
+整个操作树是**原子**执行的，要么导致所有相关实例和帐户的更新，要么在拒绝的情况下导致执行付款，但没有其他更改。发送发起事务的帐户支付整个树的执行费用。
