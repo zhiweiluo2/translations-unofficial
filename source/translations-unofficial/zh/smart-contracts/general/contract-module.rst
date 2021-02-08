@@ -1,17 +1,17 @@
 .. _contract-module:
 
 ======================
-Smart contract modules
+智能合约模块
 ======================
 
 Smart contracts are deployed on the chain in *smart contract modules*.
+智能合约部署在链上的*智能合约模块*里.
 
 .. note::
 
-   A smart contract module is often referred to simply as a *module*.
+   一个智能合同模块通常只是简单地称为*模块*.
 
-A module can contain one or more smart contracts, allowing code to be shared
-among the contracts and can optionally contain :ref:`contract schemas
+一个模块可以包含一个或多个智能合约，从而允许代码在合约之间共享，并且可以选择包含:ref:`contract schemas
 <contract-schema>`.
 
 .. graphviz::
@@ -27,27 +27,18 @@ among the contracts and can optionally contain :ref:`contract schemas
        }
    }
 
-The module must be self-contained, and only have a restricted list of imports
-that allow for interaction with the chain.
-These are provided by the host environment and are available for the smart
-contract by importing a module named ``concordium``.
+模块必须是自包含的，并且只有一个允许与链交互的受限导入列表。这些由主机环境提供，通过导入名为``concordium``的模块可用于智能合约。
 
 .. seealso::
 
    Check out :ref:`host-functions` for a complete reference.
 
-On-chain language
+链上语言
 =================
 
-On the Concordium blockchain the smart contract language is a subset of `Web
-Assembly`_ (Wasm in short) which is designed to be a portable compilation
-target and to be run in sandboxed environments. This is useful because smart
-contracts will be run by bakers in the network who do not necessarily trust
-the code.
+在Concordium区块链上，智能合约语言是`Web Assembly`_简称Wasm）的一个子集，它被设计成一个可移植的编译目标，并在沙盒环境中运行。这很有用，因为智能合约将由网络中不一定信任代码的面包师运行。
 
-Wasm is a low-level language and it is impractical to write by hand. Instead one
-can write smart contracts in a more high-level language which is then
-compiled to Wasm.
+Wasm是一种低级语言，用手写是不切实际的。相反，人们可以用更高级的语言编写智能合约，然后编译成Wasm。
 
 .. _wasm-limitations:
 
@@ -58,11 +49,7 @@ Limitations
 
    Add other limitations, such as start sections...
 
-The blockchain environment is very particular in the sense that each node must
-be able to execute the contract in exactly the same way, using exactly the same
-amount of resources. Otherwise nodes would fail to reach consensus on the
-state of the chain. For this reason smart contracts need to be written in a restricted
-subset of Wasm.
+区块链环境非常特殊，每个节点必须能够以完全相同的方式执行合同，使用完全相同的资源量。否则节点将无法就链的状态达成共识。因此，智能合约需要在Wasm的一个受限子集中编写。
 
 Floating point numbers
 ^^^^^^^^^^^^^^^^^^^^^^
