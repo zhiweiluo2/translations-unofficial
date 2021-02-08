@@ -6,216 +6,164 @@
 .. _become-a-baker:
 
 ==================================
-Become a baker (create blocks)
+成为baker（创建块）
 ==================================
 
 .. contents::
    :local:
    :backlinks: none
 
-This section explains what a baker is, its role in the network and how to become
-one.
 
-By reading this section you will learn:
+本节说明面包师是什么，baker在网络中的角色以及如何成为面包师。
 
--  What is a baker and the concepts related to it.
--  How to upgrade your node to become a baker.
+通过阅读本节，您将学到：
 
-The process of becoming a baker can be summarized in the following steps:
+-  什么是baker及其相关概念。
+-  如何升级您的节点成为面包师。
 
-#. Get an account and some GTUs.
-#. Get a set of baker keys.
-#. Register the baker keys with the account.
-#. Start the node with the baker keys.
+成为baker的过程可以概括为以下步骤：
 
-After completing these steps, the baker node will bake blocks. If a baked block
-is added to the chain the node's baker will receive a reward.
+   1. 获取一个帐户和一些GTU。
+   2. 获取一组baker键。
+   3. 将baker密钥注册到该帐户。
+   4. 使用baker键启动节点。
 
-.. note::
+完成这些步骤后，baker节点将烘烤块。如果将烘焙块添加到链中，则节点的baker将获得奖励。
 
-   In this section we will use the name ``bakerAccount`` as the name of the
-   account that will be used to register and manage a baker.
+.. 注意::
 
-Definitions
+   在本节中，我们将使用名称bakerAccount作为将用于注册和管理baker的帐户的名称。
+
+定义
 ===========
 
 Baker
 -----
 
-A node is a *baker* (or *is baking*) when it actively participates in the
-network by creating new blocks that are added to the chain. A baker collects,
-orders and validates the transactions that are included in a block to maintain
-the integrity of the blockchain. The baker signs each block that they bake so
-that the block can be checked and executed by the rest of the participants of
-the network.
+节点通过创建添加到链中的新块积极参与网络时就是Baker（或正在烘烤）。Baker收集，订购和验证区块中包含的交易，以维护区块链的完整性。Baker对每个烘烤的块进行签名，以便网络的其他参与者可以检查和执行该块。
 
-Baker keys
+Baker 键
 ----------
 
-Each baker has a set of cryptographic keys called *baker keys*. The node uses
-these keys to sign the blocks that it bakes. In order to bake blocks signed by a
-specific baker the node has to be running with its set of baker keys loaded.
+每个Baker都有一组称为Baker密钥的加密密钥。节点使用这些键对它烘烤的块进行签名。为了烘焙由特定Baker签名的块，该节点必须在加载其Baker克密钥集的情况下运行。
 
-Baker account
+Baker 账户
 -------------
 
-Each account can use a set of baker keys to register a baker.
+每个帐户可以使用一组Baker密钥来注册Baker。
 
-Whenever a baker bakes a valid block that gets included in the chain, after some
-time a reward is paid to the associated account.
+每当Baker烘烤有效的区块（包含在链中）时，一段时间后就会向关联的帐户支付奖励。
 
-Stake and lottery
+赌注和彩票
 -----------------
 
-.. todo::
+.. 全部的::
 
-   - Link to release schedule.
+   - 链接到发布时间表.
 
-The account can stake part of its GTU balance into the *baker stake* and can
-later manually release all or part of the staked amount. The staked amount
-cannot be moved or transferred until it is released by the baker.
+该帐户可以将其GTU余额的一部分抵押到Baker股份中，然后可以手动释放所有或部分抵押额。在Baker释放之前，放样的金额不能移动或转移。
 
-.. note::
+.. 注意::
 
-   If an account owns an amount that was transferred with a release schedule,
-   the amount can be staked even if not released yet.
+   如果某个帐户拥有已通过下达进度计划转帐的金额，则即使尚未下达该金额，也可以放样。
 
-In order to be chosen for baking a block, the baker must participate in a
-*lottery* in which the probability of getting a winning ticket is roughly
-proportional to the staked amount.
+为了被选择用于烘烤一块，Baker必须参加彩票，在该 彩票中获得中奖彩票的概率与所下注的数量大致成比例。
 
-The same stake is used when calculating whether a baker is included in the finalization
-committee or not. See Finalization_.
+在计算Baker是否包含在最终委员会中时，使用相同的股份。请参阅完成。
 
 .. _epochs-and-slots:
 
-Epochs and slots
+时代与空档
 ----------------
 
-In the Concordium blockchain, time is subdivided into *slots*. Slots have a time
-duration fixed at the Genesis block. On any given branch, each slot can have at
-most one block, but multiple blocks on different branches can be produced in the
-same slot.
+在Concordium区块链中，时间细分为slot。插槽的持续时间固定在“创世纪”块中。在任何给定的分支上，每个插槽最多可以有一个块，但是可以在同一插槽中产生不同分支上的多个块。
 
-.. todo::
+.. 全部的::
 
-   Let's add a picture.
+   让我们添加一张图片。
 
-When considering the rewards and other baking-related concepts, we use the
-concept of an *epoch* as a unit of time that defines a period in which the set
-of current bakers and stakes are fixed. Epochs have a time duration fixed at the
-Genesis block. In the testnet, epochs have a duration of **1 hour**.
+在考虑奖励和其他与烘焙相关的概念时，我们使用时期的概念作为时间单位，它定义了固定当前Baker和赌注的时间段。纪元的时长固定在“创世纪”块。在测试网中，纪元的持续时间为1小时。
 
-Start baking
+开始烘烤
 ============
 
-Managing accounts
+管理账户
 -----------------
 
-This section provides a brief recap of the relevant steps for importing an
-account. For a complete description, see :ref:`managing_accounts`.
+本节简要介绍了导入帐户的相关步骤。有关完整的说明，请参见：ref.`managing_accounts`。
 
-Accounts are created using the :ref:`concordium_id` app. Once an account has been
-successfully created, navigating to the **More** tab and selecting **Export**
-allows you to get a JSON file containing the account information.
+使用：ref：`concordium_id`应用程序创建帐户。成功创建帐户后，导航至“更多”选项卡并选择“导出” 即可获取包含帐户信息的JSON文件。
 
-To import an account into the toolchain run
+要将帐户导入工具链运行
 
 .. code-block:: console
 
-   $concordium-client config account import <path/to/exported/file> --name bakerAccount
+   $ concordium-client配置帐户导入<路径/到/导出/文件> --name bakerAccount
 
-``concordium-client`` will ask for a password to decrypt the exported file and
-import all accounts. The same password will be used for encrypting the
-transaction signing keys and the encrypted transfers key.
+concordium-client将要求输入密码以解密导出的文件并导入所有帐户。相同的密码将用于加密交易签名密钥和加密的转移密钥。
 
-Creating keys for a baker and registering it
+为 baker 创建密钥并注册
 --------------------------------------------
 
-.. note::
+.. 注意::
 
-   For this process the account needs to own some GTU so make sure to request the
-   100 GTU drop for the account in the mobile app.
+   对于此过程，该帐户需要拥有一些GTU，因此请确保在移动应用程序中请求该帐户的100 GTU下降。
 
-Each account has a unique baker ID that is used when registering its baker. This
-ID has to be provided by the network and currently cannot be precomputed. This
-ID must be given inside the baker keys file to the node so that it can use the
-baker keys to create blocks. The ``concordium-client`` will automatically fill
-this field when performing the following operations.
+每个帐户都有一个唯一的baker ID，该ID在注册其baker时使用。该ID必须由网络提供，并且当前无法预先计算。必须在baker密钥文件中将此ID赋予节点，以便它可以使用baker密钥创建块。concordium-client执行以下操作时，会自动填充此字段。
 
-To create a fresh set of keys run:
+要创建一组新的键，请运行：
 
 .. code-block:: console
 
-   $concordium-client baker generate-keys <keys-file>.json
+  $concordium-client baker generate-keys <keys-file>.json
 
-where you can choose an arbitrary name for the keys file. To
-register the keys in the network you need to be :ref:`running a node <running-a-node>`
-and send a ``baker add`` transaction to the network:
+您可以在其中为密钥文件选择一个任意名称。要在网络中注册密钥，您需要：运行节点<running-a-node> 并将baker add事务发送到网络：
 
 .. code-block:: console
 
    $concordium-client baker add <keys-file>.json --sender bakerAccount --stake <amountToStake> --out <concordium-data-dir>/baker-credentials.json
 
-replacing
+更换
 
-- ``<amountToStake>`` with the GTU amount for the baker's initial stake
-- ``<concordium-data-dir>`` with the following data directory:
+- <amountToStake> 面包师初始股份的GTU金额
+- <concordium-data-dir> 具有以下数据目录：
+  * 在Linux和MacOS上： ~/.local/share/concordium
+  * 在Windows上：%LOCALAPPDATA%\\concordium。
 
-  * on Linux and MacOS: ``~/.local/share/concordium``
-  * on Windows: ``%LOCALAPPDATA%\\concordium``.
+（输出文件名应保留baker-credentials.json）。
 
-(The output file name should remain ``baker-credentials.json``).
+提供一个--no-restake标志，以避免自动将奖励添加到baker的抵押金额上。此行为在“重新获得收入”部分中进行了描述。
 
-Provide a ``--no-restake`` flag to avoid automatically adding the
-rewards to the staked amount on the baker. This behavior is described on the
-section `Restaking the earnings`_.
+为了使用这些baker键启动节点并开始生成块，您首先需要关闭当前正在运行的节点（通过Ctrl + C在运行该节点的终端上按 或使用 concordium-node-stop可执行文件）。
 
-In order to start the node with these baker keys and start producing blocks you
-first need to shut down the current running node (either by pressing
-``Ctrl + C`` on the terminal where the node is running or using the
-``concordium-node-stop`` executable).
+将文件放置在适当的目录中之后（指定输出文件时已在上一个命令中完成），然后使用再次启动节点 concordium-node。当baker包含在当前时代的baker中时，该节点将自动开始烘焙。
 
-After placing the file in the appropriate directory (already done in the
-previous command when specifying the output file), start the node again using
-``concordium-node``. The node will automatically start baking when the baker
-gets included in the bakers for the current epoch.
+此更改将立即执行，并且在将添加baker的事务包含在一个块中的那个之后的纪元完成时生效。
 
-This change will be executed
-immediately and will take effect when finishing the epoch after the one in which
-the transaction for adding the baker was included in a block.
-
-.. table:: Timeline: adding a baker
+.. table:: 时间轴: 添加 baker
 
    +-------------------------------------------+-----------------------------------------+-----------------+
-   |                                           | When transaction is included in a block | After 2 epochs  |
+   |                                           | 当交易包含在区块中	                     | 2个时期后         |
    +===========================================+=========================================+=================+
-   | Change is visible by querying the node    |  ✓                                      |                 |
+   | 通过查询节点可以看到更改                    |  ✓                                     |                  |
    +-------------------------------------------+-----------------------------------------+-----------------+
-   | Baker is included in the baking committee |                                         | ✓               |
+   | baker被纳入烘焙委员会                      |                                         | ✓               |
    +-------------------------------------------+-----------------------------------------+-----------------+
 
-.. note::
+.. 注意::
 
-   If the transaction for adding the baker was included in a block during epoch `E`, the
-   baker will be considered as part of the baking committee when epoch
-   `E+2` starts.
+  如果在阶段E的某个区块中包含添加面包师的事务，则在纪元E + 2开始时，该面包师将被视为烘焙委员会的一部分。
 
-Managing the baker
+管理baker
 ==================
 
-Checking the status of the baker and its lottery power
+检查面包师的状态及其彩票能力
 ------------------------------------------------------
 
-In order to see if the node is baking, you can check various sources that
-offer different degrees of precision in the information displayed.
+为了查看节点是否正在烘焙，您可以检查显示的信息中提供不同精确度的各种来源。
 
-- In the `network dashboard <http://dashboard.testnet.concordium.com>`_, your
-  node will show its baker ID in the ``Baker`` column.
-- Using the ``concordium-client`` you can check the list of current bakers
-  and the relative staked amount that they hold, i.e. their lottery power.  The
-  lottery power will determine how likely it is that a given baker will win the
-  lottery and bake a block.
+- 在网络仪表板中，您的节点将在Baker列中显示其BakerID 。
+- 使用，concordium-client您可以检查当前Baker的列表以及他们持有的相对赌注数量，即他们的彩票能力。彩票的力量将决定给定的Baker赢得彩票并烘烤一个块的可能性。
 
   .. code-block:: console
 
@@ -229,12 +177,11 @@ offer different degrees of precision in the information displayed.
          34: 4p2n8QQn5akq3XqAAJt2a5CsnGhDvUon6HExd2szrfkZCTD4FX   <0.0001
          ...
 
-- Using the ``concordium-client`` you can check that the account has
-  registered a baker and the current amount that is staked by that baker.
+- 使用，concordium-client您可以检查帐户是否已注册baker以及该baker已抵押的当前金额。
 
   .. code-block:: console
 
-     $./concordium-client account show bakerAccount
+     $./concordium-client 账户显示 baker账户
      ...
 
      Baker: #22
@@ -242,46 +189,35 @@ offer different degrees of precision in the information displayed.
       - Restake earnings: yes
      ...
 
-- If the staked amount is big enough and there is a node running with the baker
-  keys loaded, that baker should eventually produce blocks and you can see
-  in your mobile wallet that baking rewards are being received by the account,
-  as seen in this image:
+- 如果放样量足够大，并且有一个节点在加载了baker密钥，则该baker最终将产生区块，您可以在移动钱包中看到该帐户正在收到烘烤奖励，如下图所示：
 
   .. image:: images/bab-reward.png
      :align: center
      :width: 250px
 
-Updating the staked amount
+更新抵押金额
 --------------------------
 
-To update the baker stake run
+要更新baker的股份运行
 
 .. code-block:: console
 
    $concordium-client baker update-stake --stake <newAmount> --sender bakerAccount
 
-Modifying the staked amount modifies the probability that a baker gets elected
-to bake blocks.
+修改放样量将修改选择baker烘烤块的概率。
 
-When a baker **adds stake for the first time or increases their stake**, that
-change is executed on the chain and becomes visible as soon as the transaction
-is included in a block (can be seen through ``concordium-client account show
-bakerAccount``) and takes effect 2 epochs after that.
-
-.. table:: Timeline: increasing the stake
+当baker第一次增加股份或增加股份时，该更改将在链上执行，并在交易包含在一个区块中（可以通过看到concordium-client account show bakerAccount）后立即可见，并在此之后的2个星期生效。
+.. table:: 时间轴: 增加赌注
 
    +----------------------------------------+-----------------------------------------+----------------+
-   |                                        | When transaction is included in a block | After 2 epochs |
+   |                                        | 当交易包含在区块中                        | 2个时期后       |
    +========================================+=========================================+================+
-   | Change is visible by querying the node | ✓                                       |                |
+   | 通过查询节点可以看到更改                  | ✓                                       |                |
    +----------------------------------------+-----------------------------------------+----------------+
-   | Baker uses the new stake               |                                         | ✓              |
+   | Baker 使用新股份                        |                                         | ✓              |
    +----------------------------------------+-----------------------------------------+----------------+
 
-When a baker **decreases the staked amount**, the change will need *2 +
-bakerCooldownEpochs* epochs to take effect. The change becomes visible on the
-chain as soon as the transaction is included in a block, it can be consulted through
-``concordium-client account show bakerAccount``:
+当baker减少放样量时，更改将需要2 + bakerCooldownEpochs个纪元才能生效。一旦将交易包含在一个区块中，就可以在链上看到更改，可以通过以下方式进行查询 concordium-client account show bakerAccount：
 
 .. code-block:: console
 
@@ -294,23 +230,21 @@ chain as soon as the transaction is included in a block, it can be consulted thr
 
    ...
 
-.. table:: Timeline: decreasing the stake
+.. table:: 时间线：减少赌注
 
    +----------------------------------------+-----------------------------------------+----------------------------------------+
-   |                                        | When transaction is included in a block | After *2 + bakerCooldownEpochs* epochs |
+   |                                        |当交易包含在区块中                         | 2 +baker后冷却史时代                    |
    +========================================+=========================================+========================================+
-   | Change is visible by querying the node | ✓                                       |                                        |
+   | 通过查询节点可以看到更改                 | ✓                                       |                                        |
    +----------------------------------------+-----------------------------------------+----------------------------------------+
-   | Baker uses the new stake               |                                         | ✓                                      |
+   | Baker使用新股份                         |                                         | ✓                                      |
    +----------------------------------------+-----------------------------------------+----------------------------------------+
-   | Stake can be decreased again or        | ✗                                       | ✓                                      |
-   | baker can be removed                   |                                         |                                        |
+   | 放样可以再次减少或Baker可以去除          |                                         |                                        |
    +----------------------------------------+-----------------------------------------+----------------------------------------+
 
-.. note::
+.. 注意::
 
-   In the testnet, ``bakerCooldownEpochs`` is set initially to 168 epochs. This
-   value can be checked as follows:
+  在测试网中，bakerCooldownEpochs最初设置为168个纪元。可以按以下方式检查此值：
 
    .. code-block:: console
 
@@ -319,35 +253,23 @@ chain as soon as the transaction is included in a block, it can be consulted thr
               "bakerCooldownEpochs": 168
       ...
 
-.. warning::
+.. 警告::
 
-   As noted in the `Definitions`_ section, the staked amount is *locked*,
-   i.e. it cannot be transferred or used for payment. You should take this
-   into account and consider staking an amount that will not be needed in the
-   short term. In particular, to deregister a baker or to modify the staked
-   amount you need to own some non-staked GTU to cover the transaction
-   costs.
+  如“定义”部分所述，放样金额已锁定，即无法转移或用于付款。您应该考虑到这一点，并考虑存入短期内不需要的金额。特别是，要注销Baker或更改抵押金额，您需要拥有一些未抵押的GTU来支付交易费用。
 
-Restaking the earnings
+重新取得收益
 ----------------------
 
-When participating as a baker in the network and baking blocks, the account
-receives rewards on each baked block. These rewards are automatically added to
-the staked amount by default.
+当以baker的身份参加网络和烘焙块时，该帐户将在每个烘焙块上获得奖励。默认情况下，这些奖励会自动添加到放样金额中。
 
-You can choose to modify this behavior and instead receive the rewards in
-the account balance without staking them automatically. This switch can be
-changed through ``concordium-client``:
+您可以选择修改此行为，而无需自动投入即可获得帐户余额中的奖励。可以通过concordium-client以下方式更改此开关：
 
 .. code-block:: console
 
    $concordium-client baker update-restake False --sender bakerAccount
    $concordium-client baker update-restake True --sender bakerAccount
 
-Changes to the restake flag will take effect immediately; however, the changes
-start affecting baking and finalizing power in the epoch after next. The current
-value of the switch can be seen in the account information which can be queried
-using ``concordium-client``:
+对restake标志的更改将立即生效；然而，这些变化开始影响下一个时代的烘烤和终结能力。开关的当前值可以在帐户信息中看到，可以使用concordium-client以下命令查询：
 
 .. code-block:: console
 
@@ -360,65 +282,45 @@ using ``concordium-client``:
 
    ...
 
-.. table:: Timeline: updating restake
+.. table:: 时间轴：更新restake
 
    +-----------------------------------------------+-----------------------------------------+-------------------------------+
-   |                                               | When transaction is included in a block | 2 epochs after being rewarded |
+   |                                               | 当交易包含在区块中	                       | 奖励后2个纪元                  |
    +===============================================+=========================================+===============================+
-   | Change is visible by querying the node        | ✓                                       |                               |
+   | 通过查询节点可以看到更改                        | ✓                                       |                               |
    +-----------------------------------------------+-----------------------------------------+-------------------------------+
-   | Earnings will [not] be restaked automatically | ✓                                       |                               |
+   | 收入将不会自动重新调整                          | ✓                                       |                               |
    +-----------------------------------------------+-----------------------------------------+-------------------------------+
-   | If restaking automatically, the gained        |                                         | ✓                             |
-   | stake affects the lottery power               |                                         |                               |
+   | 如果自动重购，获得的本金会影响彩票能力            |                                         |                               |
    +-----------------------------------------------+-----------------------------------------+-------------------------------+
 
-When the baker is registered, it will automatically re-stake the earnings, but as
-mentioned above, this can be changed by providing the ``--no-restake`` flag to
-the ``baker add`` command as shown here:
+注册baker后，它将自动重新获取收入，但是如上所述，可以通过为命令提供--no-restake标志来更改此收入，baker add如下所示：
 
 .. code-block:: console
 
    $concordium-client baker add baker-keys.json --sender bakerAccount --stake <amountToStake> --out baker-credentials.json --no-restake
 
-Finalization
+定案
 ------------
 
-Finalization is the voting process performed by nodes in the *finalization
-committee* that *finalizes* a block when a sufficiently big number of members of
-the committee have received the block and agree on its outcome. Newer blocks
-must have the finalized block as an ancestor to ensure the integrity of the
-chain. For more information about this process, see the
-:ref:`finalization<glossary-finalization>` section.
+敲定是指敲定委员会中的节点执行的表决过程，当委员会中有足够多的成员收到该方框并就其结果达成一致时，该方框将敲定该方框。较新的块必须具有最终块作为祖先，以确保链的完整性。有关此过程的更多信息，请参见 ：finalization <glossary-finalization>部分。
 
-The finalization committee is formed by the bakers that have a certain staked
-amount. This specifically implies that in order to participate in the
-finalization committee you will probably have to modify the staked amount
-to reach said threshold. In the testnet, the staked amount needed to participate
-in the finalization committee is **0.1% of the total amount of existing GTU**.
+敲定委员会由拥有一定赌注的面包师组成。这特别意味着，要参加定稿委员会，您可能必须修改抵押金额才能达到上述阈值。在测试网中，参与定稿委员会所需的赌注金额为现有GTU总额的0.1％。
 
-Participating in the finalization committee produces rewards on each block that
-is finalized. The rewards are paid to the baker account some time after the
-block is finalized.
+参与定稿委员会会在定稿的每个区块上产生奖励。奖励将在区块完成后的某个时间支付给面包师账户。
 
-Removing a baker
+取出 a baker
 ================
 
-The controlling account can choose to de-register its baker on the chain. To do
-so you have to execute the ``concordium-client``:
+控制帐户可以选择在链上注销其面包师。为此，您必须执行concordium-client：
 
 .. code-block:: console
 
    $concordium-client baker remove --sender bakerAccount
 
-This will remove the baker from the baker list and unlock the staked amount on
-the baker so that it can be transferred or moved freely.
+这会将面包师从面包师列表中删除，并解锁面包师上的放样金额，以便可以自由转移或移动它。
 
-When removing the baker, the change has the same timeline as decreasing
-the staked amount. The change will need *2 + bakerCooldownEpochs* epochs to take effect.
-The change becomes visible on the chain as soon as the transaction is included in a block and you
-can check when this change will be take effect by querying the account information
-with ``concordium-client`` as usual:
+移除面包师时，更改的时间与减少放样的时间相同。更改将需要2个以上的bakerCooldownEpochs纪元才能生效。一旦将交易包含在一个区块中，该更改就会在链上可见，您可以通过concordium-client照常查询帐户信息来检查此更改何时生效：
 
 .. code-block:: console
 
@@ -431,24 +333,21 @@ with ``concordium-client`` as usual:
 
    ...
 
-.. table:: Timeline: removing a baker
+.. table:: 时间轴：移除baker
 
    +--------------------------------------------+-----------------------------------------+----------------------------------------+
-   |                                            | When transaction is included in a block | After *2 + bakerCooldownEpochs* epochs |
+   |                                            | 当交易包含在区块中                        | 2 + baker 后冷却史时代                  |
    +============================================+=========================================+========================================+
-   | Change is visible by querying the node     | ✓                                       |                                        |
+   | 通过查询节点可以看到更改                     | ✓                                       |                                        |
    +--------------------------------------------+-----------------------------------------+----------------------------------------+
-   | Baker is removed from the baking committee |                                         | ✓                                      |
+   | Baker 贝克被从烘焙委员会中移除               |                                         | ✓                                      |
    +--------------------------------------------+-----------------------------------------+----------------------------------------+
 
-.. warning::
+.. 警告::
 
-   Decreasing the staked amount and removing the baker cannot be done
-   simultaneously. During the cooldown period produced by decreasing the staked
-   amount, the baker cannot be removed and vice versa.
+  减少放样量和移除 baker 不能同时进行。在通过减少放样量而产生的冷却期间，无法移除 baker，反之亦然。
 
-Support & Feedback
+支持与反馈
 ==================
 
-If you run into any issues or have suggestions, post your question or
-feedback on `Discord`_, or contact us at testnet@concordium.com.
+I如果您遇到任何问题或建议，请在Discord上发布您的问题或反馈，或通过testnet@concordium.com与我们联系。

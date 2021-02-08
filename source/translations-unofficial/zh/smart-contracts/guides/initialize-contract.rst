@@ -1,36 +1,26 @@
 .. _initialize-contract:
 
 ====================================
-Initialize a smart contract instance
+初始化智能合约实例
 ====================================
 
-This guide will show you how to initialize a smart contract from a deployed
-smart contract module with parameters in JSON or binary format.
-Additionally, it will show how to name an instance.
+本指南将向您展示如何使用JSON或二进制格式的参数从已部署的智能合约模块初始化智能合约。此外，它将显示如何命名实例。
 
-Preparation
+制备
 ===========
 
-Make sure that you are :ref:`running a node<run-a-node>` using the latest :ref:`Concordium software<downloads>` and that you have a smart
-contract :ref:`deployed <deploy-module>` in some module on-chain.
+确保您正在使用最新的Concordium软件<下载>运行节点<run-a-node>，并确保您拥有智能合约：部署了<deploy-module> `在上链一些模块。
 
-Since initializing a smart contract is a transaction, you should also make sure
-to have ``concordium-client`` set up with an account with enough GTU to pay for
-the transaction.
+由于初始化智能合约是一项交易，因此您还应确保已concordium-client建立一个具有足够GTU的账户来支付交易费用。
 
-.. note::
+.. 注意::
 
-   The cost of this transaction depends on the size of the parameters sent to
-   the init function and the complexity of the function itself.
-
-Initialization
+   此事务的成本取决于发送给init函数的参数的大小以及函数本身的复杂性。
+   
+初始化
 ==============
 
-To initialize an instance of the parameterless smart contract ``my_contract``
-from a deployed module with reference
-``9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2`` while
-allowing up to 1000 NRG to be used, run the
-following command:
+要my_contract 通过参考从已部署的模块 初始化无参数智能合约的实例，9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2同时允许使用最多1000 NRG，请运行以下命令：
 
 .. code-block:: console
 
@@ -40,7 +30,7 @@ following command:
             --contract my_contract \
             --energy 1000
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. todo::
 
@@ -51,39 +41,33 @@ If successful, the output should be similar to the following:
 
    Contract successfully initialized with address: {"index":0,"subindex":0}
 
-Seeing this message means that a new on-chain contract instance has been created
-with the address shown.
+看到此消息意味着已使用显示的地址创建了一个新的链上合同实例。
 
-.. seealso::
+.. 另
 
-   To get a deeper understanding of contract initialization, see
-   :ref:`contract-instances-init-on-chain`.
+   请参阅
+   ：要更深入地了解合同初始化，请参见：contract-instances-init-on-chain。
 
-   For more information about module references and instance addresses,
-   see :ref:`references-on-chain`.
+   有关模块引用和实例地址的更多信息，
+   请参见参考链上。
 
-   Using module references directly can be inconvenient; to name them, see
-   :ref:`naming-a-module`.
+   直接使用模块引用可能很不方便；为它们
+   命名，请参阅：命名模块。
 
 .. _init-passing-parameter-json:
 
-Passing parameters in JSON format
+以JSON格式传递参数
 ---------------------------------
 
-A parameter in JSON format can be passed if a :ref:`smart contract schema
-<contract-schema>` is supplied, either as a file or embedded in the module.
-The schema is used to serialize the JSON into binary.
+如果提供了智能合约模式<contract-schema>作为文件或嵌入在模块中，则可以传递JSON格式的参数。该模式用于将JSON序列化为二进制。
 
-.. seealso::
+.. seealso :: 
 
-   :ref:`Read more about why and how to use smart contract schemas <contract-schema>`.
+   ：参考：`了解更多关于为什么和如何使用智能合同模式<合同模式>`。
 
-   :ref:`Parameters can be also passed in binary format <init-passing-parameter-bin>`.
+   参数也可以以二进制格式<init-passing-parameter-bin>传递。
 
-To initialize an instance of the contract ``my_parameter_contract`` from the
-module with reference
-``9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2`` with a
-parameter file ``my_parameter.json`` in JSON format, run the following command:
+要my_parameter_contract使用9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2带有my_parameter.jsonJSON格式的参数文件的引用从模块 初始化合同的实例，请运行以下命令：
 
 .. code-block:: console
 
@@ -93,19 +77,17 @@ parameter file ``my_parameter.json`` in JSON format, run the following command:
             --energy 1000 \
             --parameter-json my_parameter.json
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. code-block:: console
 
    Contract successfully initialized with address: {"index":0,"subindex":0}
 
-Otherwise, an error describing the problem is displayed.
-Common errors are described in the next section.
+否则，将显示描述问题的错误。下一节将介绍常见错误。
 
-.. note::
+.. 注意::
 
-   If the parameter provided in JSON format does not conform to the type
-   specified in the schema, an error message will be displayed. For example:
+   如果以JSON格式提供的参数不符合架构中指定的类型，则将显示错误消息。例如：
 
     .. code-block:: console
 
@@ -117,29 +99,22 @@ Common errors are described in the next section.
            "second_field": 42
        }.
 
-.. note::
+.. 注意::
 
-   If a given module does not contain an embedded schema, it can be supplied
-   using the ``--schema /path/to/schema.bin`` parameter.
+   如果给定的模块不包含嵌入式模式，则可以使用--schema /path/to/schema.bin参数提供它。
 
-.. note::
+.. 注意::
 
-   GTU can also be transferred to a contract instance during initialization
-   using the ``--amount AMOUNT`` parameter.
-
+   GTU也可以在初始化期间使用--amount AMOUNT参数转移到合同实例。
 
 .. _init-passing-parameter-bin:
 
-Passing parameters in binary format
+以二进制格式传递参数
 -----------------------------------
 
-When passing parameters in binary format, a :ref:`contract schema
-<contract-schema>` is not needed.
+当以二进制格式传递参数时，不需要合约模式<contract-schema>。
 
-To initialize an instance of the contract ``my_parameter_contract`` from the
-module with reference
-``9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2`` with the
-parameter file ``my_parameter.bin`` in binary format, run the following command:
+要使用二进制格式的参数文件my_parameter_contract引用模块 中的合同实例，请运行以下命令：9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2my_parameter.bin
 
 .. code-block:: console
 
@@ -150,37 +125,32 @@ parameter file ``my_parameter.bin`` in binary format, run the following command:
             --parameter-bin my_parameter.bin
 
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. code-block:: console
 
    Contract successfully initialized with address: {"index":0,"subindex":0}
 
-.. seealso::
+.. 另
 
-   For information on how to work with parameters in smart contracts, see
-   :ref:`working-with-parameters`.
+   请参见
+   ：有关如何在智能合约中使用参数的信息，请参阅参考参数。
 
 .. _naming-an-instance:
 
-Naming a contract instance
+命名合同实例
 ==========================
 
-A contract instance can be given a local alias, or *name*, which makes
-referencing it easier.
-The name is only stored locally by ``concordium-client``, and is not visible
-on-chain.
+可以为合同实例指定本地别名或name，这使得引用起来更容易。该名称仅由本地存储concordium-client，在链上不可见。
 
-.. seealso::
+.. 另请参见：
 
-   For an explanation of how and where the names and other local settings are
-   stored, see :ref:`local-settings`.
+   有关名称和其他本地设置的
+   存储方式和位置的说明，请参见local-settings。
 
-To add a name during initialization, the ``--name`` parameter is used.
+要在初始化期间添加名称，请使用--name参数。
 
-Here, we are initializing the contract ``my_contract`` from the deployed module
-``9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2`` and naming
-it ``my_named_contract``:
+在这里，我们my_contract从部署的模块 初始化合约9eb82a01d96453dbf793acebca0ce25c617f6176bf7a564846240c9a68b15fd2并命名my_named_contract：
 
 .. code-block:: console
 
@@ -191,30 +161,27 @@ it ``my_named_contract``:
             --name my_named_contract
 
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. code-block:: console
 
-   Contract successfully initialized with address: {"index":0,"subindex":0} (my_named_contract).
+   合同实例也可以使用以下name命令命名。要命名与地址索引的实例0为my_named_contract，下面的命令运行：
 
-Contract instances can also be named using the ``name`` command.
-To name an instance with the address index ``0`` as ``my_named_contract``, run
-the following command:
 
 .. code-block:: console
 
    $concordium-client contract name 0 --name my_named_contract
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. code-block:: console
 
    Contract address {"index":0,"subindex":0} was successfully named 'my_named_contract'.
 
-.. seealso::
+.. 另
 
-   For more information about contract instance addresses, see
-   :ref:`references-on-chain`.
+   请参见
+   ：有关合同实例地址的更多信息，请参阅参考资料。
 
 .. _parameter_cursor():
    https://docs.rs/concordium-std/latest/concordium_std/trait.HasInitContext.html#tymethod.parameter_cursor

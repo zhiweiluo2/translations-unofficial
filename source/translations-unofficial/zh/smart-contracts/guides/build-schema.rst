@@ -2,35 +2,27 @@
 .. _build-schema:
 
 =======================
-Build a contract schema
+建立合约模式
 =======================
 
-This guide will show you how to build a smart contract schema, how to export it
-to a file, and/or embed the schema into the smart contract module, all using
-``cargo-concordium``.
+本指南将向您展示如何使用构建智能合约模式，如何将其导出到文件和/或将模式嵌入到智能合约模块中 ``cargo-concordium``。
 
-Preparation
+制备
 ===========
 
-First, ensure you have ``cargo-concordium`` installed and if not the guide
-:ref:`setup-tools` will help you.
+首先，请确保您已cargo-concordium安装，如果没有，安装指南 -ref：`setup-tools`将为您提供帮助。
 
-We also need the Rust source code of the smart contract you wish to build a
-schema for.
+我们还需要您希望为其构建架构的智能合约的Rust源代码。
 
-Setup the contract for a schema
+为架构设置合同
 ===============================
 
-In order to build a contract schema, we first have to prepare our smart
-contract for building the schema.
+为了构建合同模式，我们首先必须准备用于构建模式的智能合同。
 
-We can choose which parts of our smart contract to included in the schema.
-The options are to include a schema for the contract state, and/or for each of
-the parameters of init and receive functions.
+我们可以选择将智能合约的哪些部分包括在架构中。选项包括合同状态和/或初始化和接收函数的每个参数的模式。
 
-Every type we want to include in the schema must implement the ``SchemaType``
-trait. This is already done for all base types and some other types (see `list of types implementing the SchemaType`_).
-For most other cases, it can also be achieved automatically, using
+我们要包含在模式中的每种类型都必须实现SchemaType 特征。对于所有基本类型和某些其他类型，已经完成了此操作（请参阅实现SchemaType的类型列表）。对于大多数其他情况，也可以使用#[derive(SchemaType)]以下方法自动实现 ：
+
 ``#[derive(SchemaType)]``::
 
    #[derive(SchemaType)]
@@ -38,20 +30,17 @@ For most other cases, it can also be achieved automatically, using
        ...
    }
 
-Implementing the ``SchemaType`` trait manually only requires specifying one
-function, which is a getter for a ``schema::Type``, which essentially describes
-how this type is represented as bytes and how to represent it.
+SchemaType手动实现特征仅需要指定一个函数，该函数是a的获取器schema::Type，它实质上描述了如何将这种类型表示为字节以及如何表示它。
 
-.. todo::
+.. 去做：：
 
-   Create an example showing how to manually implement ``SchemaType`` and link
-   to it from here.
+   创建一个示例来展示如何手动实现SchemaType和链接
+   从这里开始。
 
-Including contract state
+包括合同状态
 ------------------------
 
-To generate and include the schema for the contract state, we annotate the type
-with the ``#[contract_state(contract = ...)]`` macro::
+为了生成并包括合同状态的模式，我们用#[contract_state(contract = ...)]宏注释类型：
 
    #[contract_state(contract = "my_contract")]
    #[derive(SchemaType)]
@@ -59,17 +48,15 @@ with the ``#[contract_state(contract = ...)]`` macro::
        ...
    }
 
-Or even simpler if the contract state is of a type that already implements ``SchemaType``, e.g., u32::
+如果合同状态是已经实现的类型，甚至更简单SchemaType，例如u32：
 
    #[contract_state(contract = "my_contract")]
    type State = u32;
 
-Including function parameters
+包括功能参数
 -----------------------------
 
-To generate and include the schema for parameters for init  and
-receive functions, we set the optional ``parameter`` attribute for the
-``#[init(..)]``- and ``#[receive(..)]``-macro::
+要为init和receive函数的参数生成并包含模式，我们parameter为#[init(..)]-和#[receive(..)]-macro设置可选属性 ：
 
    #[derive(SchemaType)]
    enum InitParameter { ... }
@@ -83,35 +70,31 @@ receive functions, we set the optional ``parameter`` attribute for the
    #[receive(contract = "my_contract", name = "my_receive", parameter = "ReceiveParameter")]
    fn contract_receive<...> (...){ ... }
 
-Building the schema
+建立架构
 ===================
 
-Now, we are ready to build the actual schema using ``cargo-concordium``, and we
-have the options to embed the schema and/or write the schema to a file.
+现在，我们准备使用来构建实际的模式cargo-concordium，并且可以选择嵌入模式和/或将模式写入文件。
 
-.. seealso::
+.. 也可以看看：：
 
-   For more on which to choose see
-   :ref:`here<contract-schema-which-to-choose>`.
+   有关更多选择的信息，请参见
+   ：ref：`此处<选择合同的模式>。
 
-Embedding the schema
+嵌入架构
 --------------------
 
-In order to embed the schema into the smart contract module, we add
-``--schema-embed`` to the build command
+为了将模式嵌入到智能合约模块中，我们--schema-embed在build命令中添加 了
 
 .. code-block:: console
 
    $cargo concordium build --schema-embed
 
-If successful the output of the command will tell you the total size of the
-schema in bytes.
+如果成功，命令的输出将告诉您模式的总大小（以字节为单位）。
 
-Outputting a schema file
+输出模式文件
 ------------------------
 
-To output the schema into a file, we can use the ``--schema-out=FILE``
-where ``FILE`` is a path of the file to create:
+要将模式输出到文件中，我们可以使用--schema-out=FILE whereFILE是要创建的文件路径：
 
 .. code-block:: console
 

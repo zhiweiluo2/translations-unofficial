@@ -1,64 +1,52 @@
 .. _interact-instance:
 
 =======================================
-Interact with a smart contract instance
+与智能合约实例互动
 =======================================
 
-This guide will show you, how to interact with a smart contract instance, which
-means triggering a receive function that, possibly, updates the state of the
-instance.
+本指南将向您展示如何与智能合约实例进行交互，这意味着触发可能会更新实例状态的接收功能。
 
-Preparation
+制备
 ===========
 
-Make sure that you are :ref:`running a node<run-a-node>` using the latest :ref:`Concordium software<downloads>` and that you have a
-smart-contract instance on-chain to inspect.
+确保您正在使用最新的Concordium软件<下载>运行一个节点<run-a-node>，并且要在链上检查智能合约实例。
 
-.. seealso::
-   For how to deploy a smart contract module see :ref:`deploy-module` and for
-   how to create an instance :ref:`initialize-contract`.
+.. 也可以看看：：
+   有关如何部署智能合约模块的信息，请参见：deploy-module。
+   如何创建实例：初始化合同。
 
-Since interactions with a smart contract are transactions, you should also make
-sure to have ``concordium-client`` set up with an account with enough GTU to pay
-for the transactions.
+由于与智能合约的交互是交易，因此，您还应确保已concordium-client建立一个具有足够GTU的帐户来支付交易费用。
 
-.. note::
+.. 注意::
 
-   The cost of this transaction depends on the size of the parameters sent to
-   the receive function and the complexity of the function itself.
+   此事务的成本取决于发送给接收函数的参数的大小以及函数本身的复杂性。
 
-Interaction
+相互作用
 ===========
 
-To update an instance with address index ``0`` using the parameterless
-receive function ``my_receive`` while allowing up to 1000 energy to be used,
-run the following command:
+要0使用无参数接收功能使用地址索引更新实例，my_receive同时允许使用多达1000个能量，请运行以下命令：
 
 .. code-block:: console
 
    $concordium-client contract update 0 --func my_receive --energy 1000
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. code-block:: console
 
    Successfully updated contract instance {"index":0,"subindex":0} using the function 'my_receive'.
 
-Passing parameters in JSON format
+以JSON格式传递参数
 ---------------------------------
 
-A parameter in JSON format can be passed if a :ref:`smart contract schema
-<contract-schema>` is supplied, either as a file or embedded in the module.
-The schema is used to serialize the JSON into binary.
+如果提供了智能合约模式<contract-schema>作为文件或嵌入在模块中，则可以传递JSON格式的参数。该模式用于将JSON序列化为二进制。
 
-.. seealso::
+.. 也可以看看：：
 
-   :ref:`Read more about why and how to use smart contract schemas
-   <contract-schema>`.
+   阅读更多有关为什么以及如何使用智能合约模式的信息
+   <contract-schema>`。
 
-To update an instance with address index ``0`` using the receive function
-``my_parameter_receive`` with a parameter file ``my_parameter.json`` in JSON
-format, run the following command:
+要使用无参数接收函数my_receive更新地址索引为0的实例，同时允许使用多达1000个能量，请运行以下命令：
 
 .. code-block:: console
 
@@ -66,24 +54,22 @@ format, run the following command:
             --energy 1000 \
             --parameter-json my_parameter.json
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. code-block:: console
 
    Successfully updated contract instance {"index":0,"subindex":0} using the function 'my_parameter_receive'.
 
-Otherwise, an error describing the problem is displayed.
-Common errors are described in the next section.
+否则，将显示描述问题的错误。下一节将介绍常见错误。
 
-.. seealso::
+.. 也可以看看：：
 
-   For more information about contract instance addresses, see
-   :ref:`references-on-chain`.
+   有关合同实例地址的更多信息，请参见
+   参考链上的参考
+   
+.. 注意::
 
-.. note::
-
-   If the parameter provided in JSON format does not conform to the type
-   specified in the schema, an error message will be displayed. For example:
+   如果以JSON格式提供的参数不符合架构中指定的类型，则将显示错误消息。例如：
 
     .. code-block:: console
 
@@ -95,25 +81,20 @@ Common errors are described in the next section.
            "second_field": 42
        }.
 
-.. note::
+.. 注意::
 
-   If a given module does not contain an embedded schema, it can be supplied
-   using the ``--schema /path/to/schema.bin`` parameter.
+   如果给定的模块不包含嵌入式模式，则可以使用--schema /path/to/schema.bin参数提供它。
+   
+.. 注意::
 
-.. note::
+   在更新期间，也可以使用--amount AMOUNT参数将GTU转移到合同中 。
 
-   GTU can also be transferred to a contract during updates using the
-   ``--amount AMOUNT`` parameter.
-
-Passing parameters in binary format
+以二进制格式传递参数
 -----------------------------------
 
-When passing parameters in binary format, a
-:ref:`contract schema <contract-schema>` is not needed.
+当以二进制格式传递参数时， 不需要合约模式<contract-schema>。
 
-To update an instance with address index ``0`` using the receive function
-``my_parameter_receive`` with a parameter file ``my_parameter.bin`` in binary
-format, run the following command:
+要0使用my_parameter_receive带有my_parameter.bin二进制格式的参数文件的接收函数 ，通过地址索引更新实例，请运行以下命令：
 
 .. code-block:: console
 
@@ -121,16 +102,16 @@ format, run the following command:
             --energy 1000 \
             --parameter-bin my_parameter.bin
 
-If successful, the output should be similar to the following:
+如果成功，则输出应类似于以下内容：
 
 .. code-block:: console
 
    Successfully updated contract instance {"index":0,"subindex":0} using the function 'my_parameter_receive'.
 
-.. seealso::
+.. 也可以看看：：
 
-   For information on how to work with parameters in smart contracts, see
-   :ref:`working-with-parameters`.
+   有关如何在智能合约中使用参数的信息，请参阅
+   参考参数。
 
 .. _parameter_cursor():
    https://docs.rs/concordium-std/latest/concordium_std/trait.HasInitContext.html#tymethod.parameter_cursor

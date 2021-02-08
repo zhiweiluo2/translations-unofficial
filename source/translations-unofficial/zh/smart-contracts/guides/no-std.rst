@@ -1,23 +1,22 @@
 .. _no-std:
 
 ======================
-Build using ``no_std``
+建立使用 ``no_std``
 ======================
 
-This guide shows how to enable ``no_std`` for your rust smart contract,
-potentially reducing the size of the resulting Wasm module by several kilobytes.
+本指南说明了如何启用 ``no_std``  rust智能合约，从而有可能将生成的Wasm模块的大小减少几千字节。
 
-Preparation
+
+制备
 ===========
 
-Compiling ``concordium-std`` without the ``std`` feature requires using the rust
-nightly toolchain, which can be installed using ``rustup``:
+``concordium-std`` 没有该 ``std`` 功能的编译需要使用rust每晚工具链，可以使用 ``rustup`` 以下方法安装：
 
 .. code-block:: console
 
    $rustup toolchain install nightly
 
-Setting up the module for ``no_std``
+设置用于 ``no_std``
 ====================================
 
 The ``concordium-std`` library exposes a ``std`` feature, which enables the use
@@ -27,34 +26,34 @@ This feature is enabled by default.
 To disable it, one must simply disable default features for the
 ``concordium-std`` in the dependencies of your module.
 
+该 ``concordium-std`` 库公开了一项 ``std`` 功能，该功能可以使用 rust 标准库。默认情况下启用此功能。
+
+要禁用它，必须简单地禁用 ``concordium-std`` 模块依赖项中的默认功能 。
+
 .. code-block:: rust
 
    [dependencies]
    concordium-std = { version: "=0.2", default-features = false }
 
-To be able to toggle between with and without std, also add a ``std`` to your
-own module, which enables the ``std`` feature of ``concordium-std``:
+为了能够在有和没有 ``std`` 之间切换，还 ``std`` 可以在自己的模块中添加a ，以启用以下``std`` 功能``concordium-std``：
 
 .. code-block:: rust
 
    [features]
    std = ["concordium-std/std"]
 
-This is the setup of the smart contract examples, where ``std`` for each
-smart contract module is enabled by default.
+这是智能合约示例的设置，其中std默认情况下启用了每个智能合约模块。
 
-Building the module
+构建模块
 ===================
 
-In order to use the nightly toolchain, add ``+nightly`` right after
-``cargo``:
+为了使用夜间工具链，请在 ``+nightly`` 之后 添加 ``cargo``：
 
 .. code-block:: console
 
    $cargo +nightly concordium build
 
-If you want to disable the default features of your own smart contract module,
-you can pass extra arguments for ``cargo``:
+如果要禁用自己的智能合约模块的默认功能，则可以为传递额外的参数 ``cargo``：
 
 .. code-block:: console
 

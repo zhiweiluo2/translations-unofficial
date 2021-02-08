@@ -1,35 +1,28 @@
 .. _local-simulate:
 
 ===================================
-Locally simulate contract functions
+本地模拟合约功能
 ===================================
 
-This guide is about how to locally simulate an invocation of some init or
-receive function from a Wasm smart contract module in a given context and
-state.
-This simulation is useful for inspecting a smart contract and the outcome in
-specific scenarios.
+本指南介绍如何在给定的上下文和状态下本地模拟某些初始化或从Wasm智能合约模块接收功能。该仿真对于检查智能合约和特定情况下的结果很有用。
 
-.. seealso::
+.. 也可以看看：：
 
-   For a guide on automated unit tests, see :ref:`unit-test-contract`.
+   有关自动单元测试的指南，请参阅：unit-test-contract。
 
-Preparation
+制备
 ===========
 
-Make sure you have ``cargo-concordium`` installed, if not follow the guide
-:ref:`setup-tools`.
-You will also need a smart contract module in Wasm to simulate.
+cargo-concordium如果没有安装，请确保已安装指南 ：ref：`setup-tools`。您还将需要Wasm中的智能合约模块来进行仿真。
 
-.. todo::
+.. 去做：：
 
-   Write the rest, when the schema stuff is in place.
-
-Simulating instantiation
+   架构内容就绪后，编写其余内容。
+   
+模拟实例化
 ========================
 
-To simulate the instantiation of a smart contract instance using
-``cargo-concordium``, run the following command:
+要使用来模拟智能合约实例的实例 cargo-concordium，请运行以下命令：
 
 .. code-block:: console
 
@@ -40,10 +33,7 @@ To simulate the instantiation of a smart contract instance using
                                --parameter-bin parameter.bin \
                                --out-bin state.bin
 
-``init-context.json`` (used with the ``--context`` parameter) is a file that
-contains context information such as the current state of the chain, the
-sender of the transaction, and which account invoked this function.
-An example of this context could be:
+init-context.json（与--context参数一起使用）是一个文件，其中包含上下文信息，例如链的当前状态，事务的发送者以及哪个帐户调用了此功能。这种情况的一个示例可能是：
 
 .. code-block:: json
 
@@ -59,16 +49,15 @@ An example of this context could be:
        }],
    }
 
-.. seealso::
+.. 也可以看看：：
 
-   For a reference of the context see :ref:`simulate-context`.
+   有关上下文的参考，请参见Simulate-context。
 
 
-Simulating updates
+模拟更新
 ==================
 
-To simulate an update to a contract smart contract instance using
-``cargo-concordium``, run:
+要使用来模拟对合同智能合约实例的更新 cargo-concordium，请运行：
 
 .. code-block:: console
 
@@ -81,11 +70,7 @@ To simulate an update to a contract smart contract instance using
                                  --state-bin state-in.bin \
                                  --out-bin state-out.bin
 
-``receive-context.json`` (used with the ``--context`` parameter) is a file that
-contains context information such as the current state of the chain, the
-sender of the transaction, which account invoked this function, and which
-account or address that sent the current message.
-An example of this context could be:
+``receive-context.json（与--context参数一起使用）是一个文件，其中包含上下文信息，例如链的当前状态，事务的发送者，调用此功能的帐户以及发送当前消息的帐户或地址。这种情况的一个示例可能是：
 
 .. code-block:: json
 
@@ -108,6 +93,6 @@ An example of this context could be:
        "owner": "3uxeCZwa3SxbksPWHwXWxCsaPucZdzNaXsRbkztqUUYRo1MnvF"
    }
 
-.. seealso::
+.. 也可以看看：：
 
-   For a reference of the context see :ref:`simulate-context`.
+   有关上下文的参考，请参见Simulate-context。

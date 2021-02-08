@@ -1,15 +1,12 @@
 .. _unit-test-contract:
 
 ============================
-Unit test a contract in Rust
+在Rust中对合同进行单元测试
 ============================
 
-This guide will show you how to write unit tests for a smart contract written in
-Rust.
-For testing a smart contract Wasm module, see :ref:`local-simulate`.
+本指南将向您展示如何为用Rust编写的智能合约编写单元测试。有关测试智能合约Wasm模块的信息，请参阅：本地模拟。
 
-A smart contract in Rust is written as a library and we can unit test it like a
-library by annotating functions with a ``#[test]`` attribute.
+Rust中的智能合约是作为库编写的，我们可以通过为#[test]属性添加功能注释来像库一样对其进行单元测试。
 
 .. code-block:: rust
 
@@ -26,32 +23,20 @@ library by annotating functions with a ``#[test]`` attribute.
         fn another_test() { ... }
     }
 
-Running the test can be done using ``cargo``:
+可以使用cargo以下命令运行测试：
 
 .. code-block:: console
 
    $cargo test
 
-By default, this command compiles the contract and tests to machine code for
-your local target (most likely ``x86_64``), and runs them.
-This kind of testing can be useful in initial development and for testing
-functional correctness.
-For comprehensive testing, it is important to involve the target platform, i.e.,
-`Wasm32`.
-There are a number of subtle differences between platforms, which can change the
-behaviour of a contract.
-One difference is regarding the size of pointers, where `Wasm32` uses four bytes
-as opposed to eight, which is common for most platforms.
+默认情况下，此命令将合同编译并测试为本地目标（最有可能是x86_64）的机器代码，然后运行它们。这种测试对于初始开发和功能正确性测试很有用。对于全面测试，重要的是要使用目标平台Wasm32。平台之间存在许多细微的差异，这些差异可以改变合同的行为。区别在于指针的大小，其中Wasm32使用四个字节，而不是八个字节，这在大多数平台上都很常见。
 
-Writing unit tests
+编写单元测试
 ==================
 
-Unit tests typically follow a three-part structure in which you: set up some
-state, run some unit of code, and make assertions about the state and output of
-the code.
+U单元测试通常遵循三部分结构，您可以在其中进行以下操作：设置某些状态，运行某些代码单元以及对代码的状态和输出进行断言。
 
-If the contract functions are written using ``#[init(..)]`` or
-``#[receive(..)]``, we can test these functions directly in the unit test.
+如果合同功能是使用#[init(..)]或 编写的#[receive(..)]，我们可以直接在单元测试中测试这些功能。
 
 .. code-block:: rust
 
@@ -72,36 +57,29 @@ If the contract functions are written using ``#[init(..)]`` or
       state: &mut State,
    ) -> ReceiveResult<A> { ... }
 
-Testing stubs for the function arguments can be found in a submodule of
-``concordium-std`` called ``test_infrastructure``.
+在concordium-std名为的子模块中可以找到功能参数的测试存根 test_infrastructure。
 
-.. seealso::
+.. 另
 
-   For more information and examples see the crate documentation of
-   concordium-std.
+   请参见：:有关更多信息和示例，请参见
+   concordium-std的包装箱文档。
 
 .. todo::
 
-   Show more of how to write the unit test
+   显示更多关于如何编写单元测试的信息
 
-Running tests in Wasm
+R在Wasm中运行测试
 =====================
 
-Compiling the tests to native machine code is sufficient for most cases, but it
-is also possible to compile the tests to Wasm and run them using the exact
-interpreter that is used by the nodes.
-This makes the test environment closer to the run environment on-chain and could
-in some cases catch more bugs.
+在大多数情况下，将测试编译为本机代码就足够了，但是也可以将测试编译为Wasm并使用节点使用的确切解释器运行它们。这使测试环境更接近于链上的运行环境，并且在某些情况下可能会捕获更多错误。
 
-The development tool ``cargo-concordium`` includes a test runner for Wasm, which
-uses the same Wasm-interpreter as the one shipped in the Concordium nodes.
+开发工具cargo-concordium包括一个用于Wasm的测试运行程序，它使用与Concordium节点中附带的Wasm解释程序相同的Wasm解释程序。
 
-.. seealso::
+.. 另::
 
-   For a guide of how to install ``cargo-concordium``, see :ref:`setup-tools`.
+   有关如何安装“ congo -concordium”的指南，请参阅：setup-tools。
 
-The unit test have to be annotated with ``#[concordium_test]`` instead of
-``#[test]``, and we use ``#[concordium_cfg_test]`` instead of ``#[cfg(test)]``:
+单元测试必须使用#[concordium_test]代替 #[test]，并且我们使用#[concordium_cfg_test]代替#[cfg(test)]：
 
 .. code-block:: rust
 
@@ -118,34 +96,24 @@ The unit test have to be annotated with ``#[concordium_test]`` instead of
        fn another_test() { ... }
    }
 
-The ``#[concordium_test]`` macro sets up our tests to be run in Wasm, when
-``concordium-std`` is compiled with the ``wasm-test`` feature, and otherwise
-falls back to behave just like ``#[test]``, meaning it is still possible to run
-unit tests targeting native code using ``cargo test``.
+将#[concordium_test]在WASM要运行的宏设置我们的测试中，当 concordium-std与编译wasm-test功能，否则将回退到表现就像#[test]，这意味着它仍然可以运行单元测试使用针对本地代码cargo test。
 
-Similarly the macro ``#[concordium_cfg_test]`` includes our module when build
-``concordium-std`` with ``wasm-test`` otherwise behaves like ``#[test]``,
-allowing us to control when to include tests in the build.
+类似地，宏#[concordium_cfg_test]在构建时会包含我们的模块 concordium-std，wasm-test否则行为类似于#[test]，从而使我们能够控制何时在构建中包含测试。
 
-Tests can now be build and run using:
+现在可以使用以下命令构建和运行测试：
 
 .. code-block:: console
 
    $cargo concordium test
 
-This command compiles the tests for Wasm with the ``wasm-test`` feature enabled
-for ``concordium-std`` and uses the test runner from ``cargo-concordium``.
+此命令编译wasm-test启用了功能的Wasm测试，concordium-std并使用中的测试运行器cargo-concordium。
 
-.. warning::
+.. 警告::
 
-   Error messages from ``panic!``, and therefore also the different variations
-   of ``assert!``, are *not* shown when compiling to Wasm.
+   编译为Wasm时，不会显示来自 panic！的错误消息，以及 assert！的不同变体。
 
-   Instead use ``fail!`` and the ``claim!`` variants to do assertions when
-   testing, as these reports back the error messages to the test runner *before*
-   failing the test.
-   Both are part of ``concordium-std``.
+   Instead use fail! and the claim! variants to do assertions when testing, as these reports back the error messages to the test runner before failing the test. Both are part of concordium-std.
 
 .. todo::
 
-   Use link concordium-std: docs.rs/concordium-std when crate is published.
+   发布板条箱时，使用链接concordium-std：docs.rs/concordium-std。

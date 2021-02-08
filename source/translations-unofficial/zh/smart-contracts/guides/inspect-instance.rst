@@ -1,34 +1,30 @@
 .. _inspect-instance:
 
 =================================
-Inspect a smart contract instance
+检查智能合约实例
 =================================
 
-This guide will show you how to inspect a smart contract instance.
-Inspecting an instance will show you its name, owner, module reference, balance,
-state and receive-functions:
+本指南将向您展示如何检查智能合约实例。检查实例将向您显示其名称，所有者，模块引用，余额，状态和接收功能：
 
-Preparation
+制备
 ===========
 
-Make sure that you are :ref:`running a node<run-a-node>` using the latest :ref:`Concordium software<downloads>` and that you have a
-smart-contract instance on-chain to inspect.
+M确保您正在使用最新的Concordium软件<下载>运行一个节点<run-a-node>，并且要在链上检查智能合约实例。
 
-.. seealso::
-   For how to deploy a smart contract module see :ref:`deploy-module` and for
-   how to create an instance :ref:`initialize-contract`.
+.. 另
+   请参阅：有关如何部署智能合约模块的信息，请参见：部署模块，以及
+   如何创建实例的初始化协议。
 
-Inspection
+检查
 ==========
 
-To inspect, or show, information about a smart contract instance with the
-address index ``0``, run the following command:
+要检查或显示有关具有地址索引的智能合约实例的信息0，请运行以下命令：
 
 .. code-block:: console
 
    $concordium-client contract show 0
 
-The output should be similar to the following:
+输出应类似于以下内容：
 
 .. code-block:: console
 
@@ -45,22 +41,18 @@ The output should be similar to the following:
     - receive_one
     - receive_two
 
-.. seealso::
+.. 另
 
-   For more information about contract instance addresses, see
-   :ref:`references-on-chain`.
+   请参见
+   ：有关合同实例地址的更多信息，请参阅参考资料。
 
-The level of detail of an inspection depends on whether the ``show`` command has
-access to a :ref:`contract schema <contract-schema>`.
-If the schema is embedded, it will be used implicitly.
-Otherwise, a schema can be provided using ``--schema /path/to/schema.bin``
-parameter.
 
-.. note::
+检查的详细程度取决于show命令是否可以访问合同模式<contract-schema>。如果架构是嵌入式的，则将隐式使用它。否则，可以使用--schema /path/to/schema.bin 参数提供架构。
 
-   A schema file provided using the ``--schema`` parameter will take precedence
-   over an embedded schema.
+.. 注意::
 
-.. seealso::
+   使用--schema参数提供的模式文件将优先于嵌入式模式。
 
-   :ref:`Read more about why and how to use smart contract schemas <contract-schema>`.
+.. 另::
+
+   :参考:`了解更多关于为什么和如何使用智能合同模式<合同模式>`.

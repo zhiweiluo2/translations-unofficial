@@ -3,53 +3,47 @@
 .. _guide-account-transactions:
 
 =========================================================
-Concordium ID: Get started with accounts and transactions
+Concordium ID：开始进行帐户和交易
 =========================================================
 
 .. contents::
    :local:
    :backlinks: none
 
-Before following this guide you should have finished requesting your initial account and identity, as described in :ref:`the previous chapter<testnet-get-started>`.
+· 创建一个新账户
+· 进行交易
+· 将金额移动到被保护的余额
+· 进行屏蔽传输
+· 揭开金额
+· 分享您的帐户地址
+· 检查发布时间表
+· 支持与反馈
+· 在遵循本指南之前，您应该已经完成​​了请求初始帐户和身份的请求，如上一章<testnet-get-started>中所述。
 
-Create a new account
+创建一个新账户
 ====================
-Before getting into how accounts, their balances and transactions work, let’s create a second account. Start by going
-to the *Accounts* page. In the upper right corner you should see a **plus sign**. Press that to continue. On the next screen
-you will be asked to name your new account. In this example we will choose the name *Example Account 2*, but you can
-choose whichever name you want.
+在介绍帐户，余额和交易如何工作之前，让我们创建第二个帐户。首先转到“帐户”页面。在右上角，您应该看到一个加号。按下以继续。在下一个屏幕上，将要求您命名新帐户。在此示例中，我们将选择名称Example Account 2，但是您可以选择所需的任何名称。
 
 .. image:: images/concordium-id/acc1.png
       :width: 32%
 .. image:: images/concordium-id/acc2.png
       :width: 32%
 
-When pressing **Next**, you will be met with a screen on which you must decide which identity to use to open the new account.
-So far you probably only have one, but if you have more you can pick whichever identity you want from the list. By
-clicking on an identity, you will be taken to the next screen. When creating a non-initial account, i.e. an account
-that is not created upon identity creation, you can choose to reveal a number of :ref:`glossary-attribute`. This is not necessary,
-and if you do not have a specific reason to do so, we recommend not revealing any, as revealed attributes go on-chain and cannot be removed.
+当按下Next时，将出现一个屏幕，您必须在该屏幕上决定使用哪个身份来打开新帐户。到目前为止，您可能只有一个，但是如果您有更多，则可以从列表中选择所需的身份。通过单击一个身份，您将进入下一个屏幕。创建非初始帐户（即在创建身份时未创建的帐户）时，您可以选择显示一些：glossary-attribute。这是没有必要的，并且如果您没有特定的原因，我们建议您不要公开任何内容，因为已公开的属性将在链上且无法删除。
 
 .. image:: images/concordium-id/acc3.png
       :width: 32%
 .. image:: images/concordium-id/acc4.png
       :width: 32%
 
-If you do press the **Reveal account attributes button**, you will be taken to the following page. You can tick
-off the attributes you would like to reveal, and then press **Submit account**. Pressing **Submit account** on this or the previous
-page, will take you to the final account creation page, which will give you a short overview and tell you that the account
-has been submitted.
+如果确实按了“显示帐户属性”按钮，则将转到下一页。您可以勾选要显示的属性，然后按提交帐户。在此页面或上一页中按“提交帐户”，将带您进入最终帐户创建页面，该页面将为您提供简短概述并告诉您该帐户已提交。
 
 .. image:: images/concordium-id/acc5.png
       :width: 32%
 .. image:: images/concordium-id/acc6.png
       :width: 32%
 
-By pressing **Ok, thanks** on the submission overview, you will be taken back to the account page. You might see that your new
-account is still pending, as it can take a few minutes to finalize on chain. If you have not tried to do so yet, you can
-try pressing the downwards facing arrow on one of the account cards, to see that it will fold out the card. This reveals
-two new pieces of information, *at disposal* and *staked*. The at disposal field will tell you how much of the accounts balance is
-at available for use at the given moment, and the staked amount you can read more about on the :ref:`managing accounts<managing_accounts>` page.
+通过单击确定，谢谢您在提交概述中，您将返回到帐户页面。您可能会发现您的新帐户仍处于待处理状态，因为这可能需要几分钟才能最终确定。如果您尚未尝试这样做，则可以尝试按其中一张帐户卡上的向下箭头，以查看它会折叠到该卡上。这揭示了两个新的信息，可供使用和抵押。“可支配”字段将告诉您在给定的时刻有多少可用的帐户余额，以及您可以在管理帐户<managing_accounts>页面上详细了解的抵押金额。
 
 .. image:: images/concordium-id/acc7.png
       :width: 32%
@@ -57,48 +51,37 @@ at available for use at the given moment, and the staked amount you can read mor
       :width: 32%
 
 
-Make a transaction
+进行交易
 ====================
-Next up, try pressing the **Balance** area of your newly created account. On this
-screen you can see the current balance of your account, and at this point, it will also let you request 100 GTU to use on
-the Testnet. The request for 100 GTU is a Testnet feature, and for Testnet 4 it will actually transfer 2000 GTU to the account,
-even though the button says 100. The GTU drop is only available on an account once. By pressing it, you will notice a transaction
-appearing. This will be pending for a bit, and after a while 2000 GTU will be added to your account.
+接下来，尝试按新创建帐户的“余额”区域。在此屏幕上，您可以看到帐户的当前余额，并且在这一点上，您还可以请求在Testnet上使用100 GTU。对于100 GTU的请求是Testnet的功能，对于Testnet 4，它将实际上将2000 GTU转移到该帐户，即使该按钮显示为100。GTU删除仅在一个帐户上可用。按下它，您会注意到正在出现交易。这将待一会儿，不久后会将2000 GTU添加到您的帐户中。
 
 .. image:: images/concordium-id/acc9.png
       :width: 32%
 .. image:: images/concordium-id/acc10.png
       :width: 32%
 
-Now that we have some GTU in our account, let’s try making a transaction. Press the **SEND** button to do that. On the next page
-you can input the amount you want to transfer, and select a recipient. In this example we will transfer 10 GTU.
+现在我们的帐户中有一些GTU，让我们尝试进行交易。按发送按钮执行此操作。在下一页上，您可以输入要转账的金额，然后选择收件人。在此示例中，我们将传输10 GTU。
 
 .. image:: images/concordium-id/acc11.png
       :width: 32%
 .. image:: images/concordium-id/acc12.png
       :width: 32%
 
-Having decided on an amount, we will now choose the recipient. To do this, press the Select **Recipient or shield amount** button.
-On this page you can search for recipients in your *address book* or add your recipient by scanning the receiving account’s QR code.
-As you can see in the screenshot, we only have one recipient saved, *Example Account 1*. Above that, we have the option to *Shield an
-amount*, but we will get back to that later. We will choose *Example Account 1* as our recipient in this example.
+确定金额后，我们现在将选择收件人。为此，请按“选择收件人”或“屏蔽数量”按钮。在此页面上，您可以在通讯簿中搜索收件人，也可以通过扫描接收帐户的QR码来添加收件人。正如您在屏幕截图中所看到的，我们仅保存了一个收件人，即示例帐户1。在此之上，我们可以选择屏蔽金额，但稍后我们会再讨论。在此示例中，我们将选择示例帐户1作为我们的收件人。
 
 .. image:: images/concordium-id/acc13.png
       :width: 32%
 .. image:: images/concordium-id/acc14.png
       :width: 32%
 
-With the amount and recipient chosen, we can press **Send Funds** to continue. By doing this we are met by a confirmation screen on
-which we can verify the amount, recipient and sending account.  By pressing **Yes, send funds**, we will verify ourselves using a passcode
-or biometrics, and then the transaction is submitted to the chain. It might take a bit for the transaction to finalize.
+选择金额和收件人后，我们可以按“发送资金”继续。通过这样做，我们将在确认屏幕上看到我们可以在其中确认金额，收件人和发送帐户。按是，发送资金，我们将使用密码或生物识别技术进行自我验证，然后将交易提交至连锁店。完成交易可能需要一些时间。
 
 .. image:: images/concordium-id/acc15.png
       :width: 32%
 .. image:: images/concordium-id/acc16.png
       :width: 32%
 
-We can now see that the *Example Account 2*’s *Transfers* log shows that the amount has been deducted, plus a *fee*. All transactions will
-cost a fee, and depending on the type of transaction the fee might differ. Pressing the transaction will let you see more details.
+现在，我们可以看到“示例帐户2 ”的“转帐”日志显示已扣除了该金额，再加上一笔费用。所有交易都将收取费用，并且根据交易类型的不同，费用可能会有所不同。按下交易将使您看到更多详细信息。
 
 .. image:: images/concordium-id/acc17.png
       :width: 32%
@@ -107,59 +90,46 @@ cost a fee, and depending on the type of transaction the fee might differ. Press
 
 .. _move-an-amount-to-the-shielded-balance:
 
-Move an amount to the shielded balance
+将金额移动到被保护的余额
 ========================================
-If we go back to the *Accounts* screen, we can now see that the 10 GTU has been transferred to the *Balance* of *Example Account 1*. As you might
-have noticed before, the accounts also have a :ref:`glossary-shielded-balance`. In short, the shielded balance is for keeping shielded (encrypted) amounts
-of GTU on the account. Lets’ try adding some shielded GTU to our *Example Account 2*. Start by pressing the **Shielded Balance** area of the account card.
+如果返回到“帐户”屏幕，现在可以看到10 GTU已转移到示例帐户1的余额中。您可能已经注意到，这些帐户还具有：ref：`glossary-shielded-balance`。简而言之，屏蔽余额用于在帐户上保留GTU的屏蔽（加密）金额。让我们尝试在示例帐户2中添加一些受屏蔽的GTU 。首先按下帐户卡的“屏蔽余额”区域。
 
 .. image:: images/concordium-id/acc19.png
       :width: 32%
 .. image:: images/concordium-id/acc20.png
       :width: 32%
 
-Next, press the **SEND** button again and enter an amount of GTU to *shield*, which is the action of adding some GTU to the *Shielded Balance*.
-After doing that, let’s press **Select Recipient or shield amount** again. Instead of choosing a recipient, this time we will press **Shield amount**.
+接下来，再次按SEND按钮并输入要屏蔽的GTU量，这是在Shielded Balance中添加一些GTU的动作。完成此操作后，让我们再次按“选择收件人”或“屏蔽金额”。这次我们没有选择接收者，而是按Shield amount。
 
 .. image:: images/concordium-id/acc21.png
       :width: 32%
 .. image:: images/concordium-id/acc22.png
       :width: 32%
 
-We can now continue and confirm the transaction, just like we did before with the regular transfer. The transaction might take a moment
-to finalize on the chain.
+现在，我们可以像常规转帐之前一样继续并确认交易。该交易可能需要一点时间才能在链上完成。
 
 .. image:: images/concordium-id/acc23.png
       :width: 32%
 .. image:: images/concordium-id/acc24.png
       :width: 32%
 
-By going back to the *Accounts* page, it can now be seen that there is 10 GTU on the *Shielded Balance* of *Example Account 2*. If the *Shielded
-Balance* area of the account card is pressed, we can see that there is a *Shielded amount* transaction in the shielded balance transfers log.
-Making a shielding transaction will also cost a fee, but this fee will be deducted from the regular balance of the account. Try going
-back and have a look at the transfer log of the regular *Balance*.
+通过返回“帐户”页面，现在可以看到示例帐户2的受保护余额中有10 GTU 。如果按了帐户卡的“保护余额”区域，则可以看到在“保护余额转账”日志中有一个“保护金额”交易。进行屏蔽交易也将收取一定费用，但该费用将从帐户的常规余额中扣除。尝试返回并查看常规余额的转移日志。
 
 .. image:: images/concordium-id/acc25.png
       :width: 32%
 .. image:: images/concordium-id/acc26.png
       :width: 32%
 
-Make a shielded transfer
+进行屏蔽传输
 ========================
-Having some shielded GTU available, we can now try making a *Shielded transfer*, which means that we can make a transfer with an encrypted
-amount of GTU. The first step is to browse to the *shielded balance* page of the account containing shielded GTU, if you are not already
-there. Then press the **SEND** button. You will now be able to enter an amount and choose a recipient. In this example we have chosen to
-transfer 2 GTU. When pressing the **Select Recipient or unshield amount** button, you will be able to choose a recipient. We will choose
-*Example Account 2* in this example.
+有了一些可用的屏蔽GTU，我们现在可以尝试进行屏蔽传输，这意味着我们可以使用加密量的GTU进行传输。第一步是浏览到包含受保护GTU的帐户的受保护余额页面（如果您还没有的话）。然后按发送按钮。现在，您将能够输入金额并选择收款人。在此示例中，我们选择了传输2 GTU。按“选择收件人”或“取消屏蔽金额”按钮时，您将能够选择收件人。在此示例中，我们将选择“ 示例帐户2”。
 
 .. image:: images/concordium-id/acc27.png
       :width: 32%
 .. image:: images/concordium-id/acc28.png
       :width: 32%
 
-With the amount and recipient in place, you can now continue. Just like the other transactions you will now see a confirmation screen,
-and by continuing from that you will be able to verify yourself with a passcode or biometrics, and then submit the shielded transaction
-to the chain. Again, the transaction might take a moment to finalize on the chain.
+有了金额和收件人之后，您现在可以继续。就像其他交易一样，您现在将看到一个确认屏幕，然后继续进行操作，就可以使用密码或生物识别技术来验证自己，然后将被屏蔽的交易提交到链中。同样，该交易可能需要一些时间才能最终确定。
 
 .. image:: images/concordium-id/acc29.png
       :width: 32%
@@ -167,56 +137,40 @@ to the chain. Again, the transaction might take a moment to finalize on the chai
       :width: 32%
 
 
-Now, if you go back to the *Accounts* screen, you should be able to see that a little shield has appeared beside the amount on the
-*Shielded Balance* of the receiving account. This indicates that there are newly received shielded transactions on the shielded balance.
-Try pressing the shielded balance, and notice that you have to enter a passcode or use your biometrics to enter it.
-This happens because you need to decrypt received shielded transactions, before you can see the amount.
-
+现在，如果您返回到“帐户”屏幕，您应该能够看到收款账户的“受保护的余额”中的金额旁边出现了一个小的保护 。这表明在受保护的余额上有新接收到的受保护的交易。尝试按屏蔽的天平，请注意，您必须输入密码或使用生物识别技术输入密码。发生这种情况是因为您需要先解密收到的受屏蔽交易，然后才能看到金额。
 .. image:: images/concordium-id/acc31.png
       :width: 32%
 .. image:: images/concordium-id/acc32.png
       :width: 32%
 
-Unshield an amount
+揭开金额
 ==================
-After the decryption, the amount is now visible in the *shielded balance* and on the account card on the *Accounts* screen. Now, what if we
-want to move some GTU from a shielded balance to a regular balance? Let’s try to move the 2 GTU to the regular balance via the action of
-*Unshielding* an amount. To do this, press the **SEND** button in the shielded balance. Enter 2 as the amount, and then press **Select Recipient
-or unshield amount**. **Choose Unshield amount**.
+解密后，该金额现在在受保护的余额和“帐户”屏幕上的帐户卡上可见。现在，如果我们想将一些GTU从屏蔽余额转移到常规余额，该怎么办？让我们尝试通过取消屏蔽金额的动作将2 GTU移至常规余额 。为此，请按屏蔽天平中的“发送”按钮。输入2作为金额，然后按选择收件人或取消屏蔽金额。选择取消屏蔽金额。
 
 .. image:: images/concordium-id/acc33.png
       :width: 32%
 .. image:: images/concordium-id/acc34.png
       :width: 32%
 
-Now finish the transaction like you did with the other ones, and try browsing to the regular balance of the account to see the unshielding.
-If the transaction has finalized on chain, you should now be able to see that an *Unshielded amount* has ticked in on the regular balance.
-Notice how it is not 2 GTU, even though the amount you just unshielded was 2. This is because the fee for making any transaction, including
-an unshielding, will be deducted from the regular balance of the account responsible for the transaction.
+现在，像完成其他交易一样完成交易，然后尝试浏览至帐户的常规余额以查看解除屏蔽状态。如果交易已经按链完成，您现在应该可以看到常规余额中已显示未屏蔽金额。请注意，即使您刚屏蔽的金额不是2 GTU，这也不是2 GTU。这是因为进行任何事务（包括屏蔽）的费用将从负责该事务的帐户的常规余额中扣除。
 
 .. image:: images/concordium-id/acc35.png
       :width: 32%
 .. image:: images/concordium-id/acc36.png
       :width: 32%
 
-Share your account address
+分享您的帐户地址
 ==========================
-If you want to share the address of your account, this can be easily done by pressing the **Address** button. This will take you to a page
-where you have multiple options of sharing the account address. Try pressing the **Share** button, and share your address with someone.
+如果要共享您的帐户地址，可以通过按“地址”按钮轻松完成。这将带您到一个页面，您可以在其中共享帐户地址的多个选项。尝试按“共享”按钮，然后与某人共享您的地址。
 
 .. image:: images/concordium-id/acc37.png
       :width: 32%
 .. image:: images/concordium-id/acc38.png
       :width: 32%
 
-Inspect a release schedule
+检查发布时间表
 ==========================
-On the Concordium blockchain it is possible to make a transaction that releases the transferred amount over time. This is called a
-*transfer with a schedule*. For now we will not get into how to make such a transfer as it cannot be done from Concordium ID,
-but let’s check out how a release schedule can be inspected. If you receive a transfer with a release schedule, you can press the
-**burger menu** in the upper right corner of the balance screen. This will allow you to press **Release schedule**, and by doing this you
-will be taken to a screen containing information on how much GTU will be released and when. If you want to learn more about how to
-make a transfer with a release schedule, you can have a look at the :ref:`concordium_client` and :ref:`transactions` pages.
+在Concordium区块链上，可以进行交易，以随着时间的流逝释放所转移的金额。这称为带计划的 转移。现在，我们将不讨论如何从Concordium ID进行转移，但是我们来看看如何检查发布时间表。如果您收到包含下达时间表的转帐，则可以按余额屏幕右上角的 汉堡菜单。这将允许您按下发布时间表，然后执行此操作，您将进入一个屏幕，其中包含有关释放多少GTU以及何时发布的信息。如果您想了解更多有关如何使用发布时间表进行转移的信息，请查看：ref：`concordium_client`和：ref：`transactions`页面。
 
 .. image:: images/concordium-id/rel1.png
       :width: 32%
@@ -225,8 +179,7 @@ make a transfer with a release schedule, you can have a look at the :ref:`concor
 .. image:: images/concordium-id/rel3.png
       :width: 32%
 
-Support & Feedback
+支持与反馈
 ==================
 
-If you run into any issues or have suggestions, post your question or
-feedback on `Discord`_, or contact us at testnet@concordium.com.
+如果您遇到任何问题或建议，请在Discord上发布您的问题或反馈，或通过testnet@concordium.com与我们联系。
