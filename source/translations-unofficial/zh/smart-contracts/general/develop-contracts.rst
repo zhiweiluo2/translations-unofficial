@@ -20,19 +20,7 @@ Developing smart contracts in Rust
 
 在concordium区块链上，智能合约部署为Wasm模块，但Wasm主要设计为编译目标，不方便手工编写。相反，我们可以用Rust_ 编程语言编写智能合约，它对编译到Wasm有很好的支持。
 
-智能合约不必用铁锈纸写。这只是我们提供的第一个SDK。手动编写的WASM，或者从C、C++、汇编脚本等中编译的WASM，在链上同样有效，只要它遵循：REF: `WASM限制，我们强加<WASM限制>` .
-
-On the concordium blockchain smart contracts are deployed as Wasm modules, but
-Wasm is designed primarily as a compilation target and is not convenient to
-write by hand.
-Instead we can write our smart contracts in the Rust_ programming language, which
-has good support for compiling to Wasm.
-
-Smart contracts do not have to be written in Rust.
-This is simply the first SDK we provide.
-Manually written Wasm, or Wasm compiled from C, C++, AssemblyScript_, and
-others, is equally valid on the chain, as long as it adheres to the :ref:`Wasm
-limitations we impose <wasm-limitations>`.
+智能合约不必用铁锈纸写。这只是我们提供的第一个SDK。手动编写的WASM，或者从C、C++、汇编脚本等中编译的WASM，在链上同样有效，只要它遵循：REF: `WASM限制，我们强加<wasm-limitations>` .
 
 .. seealso::
 
