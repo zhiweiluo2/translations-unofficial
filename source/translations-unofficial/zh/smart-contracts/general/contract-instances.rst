@@ -1,19 +1,15 @@
 .. _contract-instances:
 
 ========================
-Smart contract instances
+智能合约实例
 ========================
 
 .. todo::
 
-   - Clarify how instances relate to smart contracts relate to modules
-     (e.g., right now it says that an instance is a module + state but the
-     picture below shows instances as contracts + state).
-   - Decide how exactly we should define smart-contract modules (as its own concept
-     or as Wasm modules), and whether we should talk about them at all.
-   - Decide whether we should have a concrete code example, and whether it should
-     be in Wasm or Rust or perhaps pseudocode.
-   - Consider having a picture that explains the relationship between modules and instances.
+  - 阐明与智能合约相关的实例如何与模块相关（例如，现在它说一个实例是模块+状态，但是下面的图片显示的实例为contracts+state）。
+  - 决定我们应该如何准确地定义智能合约模块（作为它自己的概念或者作为Wasm模块），以及我们是否应该讨论它们。
+  - 决定我们是否应该有一个具体的代码示例，以及它是否应该处于Wasm、Rust或伪代码中。
+  - 考虑用一幅图来解释模块和实例之间的关系。
 
 **智能合约实例**是智能合约模块以及特定状态和GTU令牌量。可以从同一模块创建多个智能合约实例。例如，对于：ref:`auction<auction>`合同，可以有多个实例，每个实例都专门用于对特定项目进行投标，并有自己的参与者。
 
