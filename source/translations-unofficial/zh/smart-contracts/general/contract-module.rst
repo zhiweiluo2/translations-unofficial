@@ -54,26 +54,17 @@ Limitations
 Floating point numbers
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Although Wasm does have support for floating point numbers, a smart contract is
-disallowed to use them. The reason for this is that Wasm floating-point numbers
-can have a special ``NaN`` ("not a number") value whose treatment can result in nondeterminism.
 
-The restriction applies statically, meaning that smart contracts cannot contain
-floating point types, nor can they contain any instructions that involve floating
-point values.
+虽然Wasm确实支持浮点数，但是智能合约不允许使用它们。原因是Wasm浮点数可以有一个特殊的``NaN``（“非数字”）值，它的处理会导致不确定性。
 
+该限制静态应用，这意味着智能合约不能包含浮点类型，也不能包含任何涉及浮点值的指令。
 
 Deployment
 ==========
 
-Deploying a module to the chain means submitting the module bytecode as a
-transaction to the Concordium network. If *valid* this transaction will be
-included in a block. This transaction, as every other transaction, has an
-associated cost. The cost is based on the size of the bytecode and is charged
-for both checking validity of the module and on-chain storage.
+将模块部署到链意味着将模块字节码作为事务提交到Concordium网络。如果有效，此事务将包含在块中。与其他交易一样，此交易也有相关的成本。成本是基于字节码的大小，并收取检查模块的有效性和链上存储的费用。
 
-The deployment itself does not execute
-smart contract. To execute, a user must first create an *instance* of a contract.
+部署本身不执行智能协定。要执行，用户必须首先创建契约的*实例*。
 
 .. seealso::
 
@@ -90,28 +81,16 @@ smart contract. To execute, a user must first create an *instance* of a contract
 Smart contract on the chain
 ===========================
 
-A smart contract on the chain is a collection of functions exported from a deployed
-module. The concrete mechanism used for this is the `Web Assembly`_ export
-section. A smart contract must export one function for initializing new
-instances and can export zero or more functions for updating the instance.
+链上的智能合约是从已部署模块导出的函数集合。用于此操作的具体机制是`Web程序集`_导出部分。智能合约必须导出一个用于初始化新实例的函数，并且可以导出零个或多个用于更新实例的函数。
 
-Since a smart contract module can export functions for multiple different smart
-contracts, we associate the functions using a naming scheme:
+由于智能合约模块可以导出多个不同智能合约的函数，因此我们使用命名方案将函数关联起来：
 
-- ``init_<contract-name>``: The function for initializing a smart contract must
-  start with ``init_`` followed by a name of the smart contract. The contract
-  must consist only of ASCII alphanumeric or punctuation characters, and is not
-  allowed to contain the ``.`` symbol.
+- ``init_<contract-name>``: 初始化智能合约的函数必须以``init``开头，后跟智能合约的名称。合同只能由ASCII字母数字或标点符号组成，不允许包含.符号。
 
-- ``<contract-name>.<receive-function-name>``: Functions for interacting with a
-  smart contract are prefixed with the contract name, followed by a ``.`` and a
-  name for the function. Same as for the init function, the contract name is not allowed
-  to contain the ``.`` symbol.
+- ``<contract-name>.<receive-function-name>``: 用于与智能合约交互的函数以合约名称作为前缀，后跟``.``函数的名称。与init函数相同，协定名称不允许包含``.``符号。
 
 .. note::
-
-   If you develop smart contracts using Rust and ``concordium-std``, the
-   procedural macros ``#[init(...)]`` and ``#[receive(...)]`` set up the
-   correct naming scheme.
+   
+   如果您使用Rust和concordium-std开发智能合约，则程序宏``#[init(...)]``和``#[init(...)]``会设置正确的命名方案。
 
 .. _Web Assembly: https://webassembly.org/
