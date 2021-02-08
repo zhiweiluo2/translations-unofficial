@@ -18,6 +18,10 @@
 Developing smart contracts in Rust
 ==================================
 
+在concordium区块链上，智能合约部署为Wasm模块，但Wasm主要设计为编译目标，不方便手工编写。相反，我们可以用Rust_ 编程语言编写智能合约，它对编译到Wasm有很好的支持。
+
+智能合约不必用铁锈纸写。这只是我们提供的第一个SDK。手动编写的WASM，或者从C、C++、汇编脚本等中编译的WASM，在链上同样有效，只要它遵循：REF: `WASM限制，我们强加<WASM限制>` .
+
 On the concordium blockchain smart contracts are deployed as Wasm modules, but
 Wasm is designed primarily as a compilation target and is not convenient to
 write by hand.
@@ -32,17 +36,13 @@ limitations we impose <wasm-limitations>`.
 
 .. seealso::
 
-   For more information on the functions described below, see the concordium_std_
-   API for writing smart contracts on the Concordium blockchain in Rust.
+   有关下面描述的函数的更多信息，请参阅concordium_std_ 用于在Rust中的Concordium区块链上编写智能合约的API。
 
 .. seealso::
 
    See :ref:`contract-module` for more information about smart contract modules.
 
-A smart contract module is developed in Rust as a library crate, which is then
-compiled to Wasm.
-To obtain correct exports, the `crate-type` attribute must be set to
-``["cdylib", "rlib"]`` in the manifest file:
+在Rust中开发了一个智能合约模块作为一个库板条箱，然后编译成Wasm。要获得正确的导出，必须在清单文件中将 `crate-type` 属性设置为 ``["cdylib"，"rlib"]`` :
 
 .. code-block:: text
 
@@ -54,14 +54,11 @@ To obtain correct exports, the `crate-type` attribute must be set to
 Writing a smart contract using ``concordium_std``
 =================================================
 
-It is recommended to use the ``concordium_std`` crate, which provides a
-more Rust-like experience for developing smart contract modules and calling
-host functions.
+建议使用 ``concordium_std`` 板条箱，该板条箱为开发智能合约模块和调用主机函数提供了更像Rust的体验。
 
-The crate enables writing init and receive functions as simple Rust
-functions annotated with ``#[init(...)]`` and ``#[receive(...)]``, respectively.
+板条箱可将init和receive函数编写为简单的Rust函数，分别使用 ``#[init(...)]`` 和 ``#[receive(...)]`` 进行注释。
 
-Here is an example of a smart contract that implements a counter:
+这是实现计数器的智能合约的示例：
 
 .. code-block:: rust
 
@@ -116,10 +113,7 @@ There are a number of things to notice:
 
 .. note::
 
-   Note that deserialization is not without cost, and in some cases the
-   user might want more fine-grained control over the use of host functions.
-   For such use cases the annotations support a ``low_level`` option, which has
-   less overhead, but requires more from the user.
+   请注意，反序列化并不是没有代价的，在某些情况下，用户可能希望对主机函数的使用进行更细粒度的控制。对于这样的用例，注解支持一个 ``低级别`` 的选项，它有较少的开销，但是需要用户提供更多的资源。 
 
 .. todo::
 
@@ -133,16 +127,11 @@ Serializable state and parameters
 .. todo:: Clarify what it means that the state is exposed similarly to ``File``;
    preferably, without referring to ``File``.
 
-On-chain, the state of an instance is represented as a byte array and exposed
-in a similar interface as the ``File`` interface of the Rust standard library.
+在链上，实例的状态表示为字节数组，并在与Rust标准库的 ``文件`` 接口类似的接口中公开。
 
-This can be done using the ``Serialize`` trait which contains (de-)serialization
-functions.
+这可以使用包含（反）序列化函数的 ``Serialize`` trait来完成。
 
-The ``concordium_std`` crate includes this trait and implementations for
-most types in the Rust standard library.
-It also includes macros for deriving the trait for user-defined structs and
-enums.
+``concordium_std`` crate 包含了这个特性，并且实现了Rust标准库中的大多数类型。它还包括用于为用户定义的结构和枚举派生特征的宏。
 
 .. code-block:: rust
 
@@ -153,28 +142,22 @@ enums.
        ...
    }
 
-The same is necessary for parameters to init and receive functions.
+参数初始化和接收函数的必要条件相同。
 
-.. note::
+.. 注意::
 
-   Strictly speaking we only need to deserialize bytes to our parameter type,
-   but it is convenient to be able to serialize types when writing unit tests.
+   严格来说，我们只需要将字节反序列化为我们的参数类型，但是在编写单元测试时能够序列化类型很方便。
 
 .. _working-with-parameters:
 
 Working with parameters
 -----------------------
 
-Parameters to the init and receive functions are, like the instance
-state, represented as byte arrays.
-While the byte arrays can be used directly, they can also be deserialized into
-structured data.
+init和receive函数的参数与实例状态类似，表示为字节数组。虽然字节数组可以直接使用，但它们也可以反序列化为结构化数据。
 
-The simplest way to deserialize a parameter is through the `get()`_ function of
-the `Get`_ trait.
+反序列化参数的最简单方法是通过get trait的 `get()`_ 函数。
 
-As an example, see the following contract in which the parameter
-``ReceiveParameter`` is deserialized on the highlighted line:
+例如，请参见以下协定，其中参数 ``ReceiveParameter`` 在突出显示的行上反序列化：
 
 .. code-block:: rust
    :emphasize-lines: 24
@@ -209,11 +192,9 @@ As an example, see the following contract in which the parameter
        Ok(A::accept())
    }
 
-The receive function above is inefficient in that it deserializes the
-``value`` even when it is not needed, i.e., when ``should_add`` is ``false``.
+上面的receive函数效率低下，因为它甚至在不需要值的时候反序列化该值，即当 should_add为false。
 
-To get more control, and in this case, more efficiency, we can deserialize the
-parameter using the `Read`_ trait:
+为了获得更多的控制，在这种情况下，更高效，我们可以使用 `Read`_ trait反序列化参数：
 
 .. code-block:: rust
    :emphasize-lines: 7, 10
@@ -233,11 +214,7 @@ parameter using the `Read`_ trait:
        Ok(A::accept())
    }
 
-Notice that the ``value`` is only deserialized if ``should_add`` is
-``true``.
-While the gain in efficiency is minimal in this example, it could have an
-substantial impact for more complex examples.
-
+请注意，只有当 ``should_add`` 为 ``true`` 时，才会反序列化该值。虽然在这个例子中，效率的提高是最小的，但对于更复杂的例子，它可能会产生实质性的影响。
 
 Building a smart contract module with ``cargo-concordium``
 ==========================================================
@@ -279,15 +256,9 @@ Don't panic
 Avoid creating black holes
 --------------------------
 
-A smart contract is not required to use the amount of GTU send to it, and by
-default a smart contract does not define any behavior for emptying the balance
-of an instance, in case someone were to send some GTU.
-These GTU would then be forever *lost*, and there would be no way to recover
-them.
+智能合约不需要使用发送给它的GTU数量，默认情况下，智能合约不定义清空实例余额的任何行为，以防有人发送一些GTU。这些GTU将永远 *失去* ，也没有办法找回它们。
 
-Therefore it is good practice for smart contracts that are not dealing with GTU,
-to ensure the sent amount of GTU is zero and reject any invocations which are
-not.
+因此，对于不处理GTU的智能合约来说，最好确保GTU的发送量为零，并拒绝任何不处理GTU的调用。
 
 Move heavy calculations off-chain
 ---------------------------------
