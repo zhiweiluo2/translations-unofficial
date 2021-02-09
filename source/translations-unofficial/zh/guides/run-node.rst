@@ -36,7 +36,7 @@
 
 要升级到用于Open Testnet 4的当前Concordium软件，请执行以下操作：
 
-- 请按照上述步骤操作，以 :ref:`下载<downloads>` 最新的Concordium软件。
+- 请按照上述步骤操作，以 :ref:`download<downloads>下载` 最新的Concordium软件。
 
 
 -  concordium-node-reset-data从解压缩的存档中运行可执行文件。
