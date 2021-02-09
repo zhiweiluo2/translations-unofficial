@@ -85,7 +85,7 @@ Limitations
 
 - ``init_<contract-name>`` : 初始化智能合约的函数必须以 ``init`` 开头，后跟智能合约的名称。合同只能由ASCII字母数字或标点符号组成，不允许包含.符号。
 
-- ``<contract-name>.<receive-function-name>`` : 用于与智能合约交互的函数以合约名称作为前缀，后跟 ``.`` 函数的名称。与init函数相同，协定名称不允许包含 ``.`` 符号。
+- ``<contract-name>.<receive-function-name>`` : 用于与智能合约交互的函数以合约名称作为前缀，后跟 ``.`` 和函数的名称。与init函数相同，协定名称不允许包含 ``.`` 符号。
 
 .. note::
    
