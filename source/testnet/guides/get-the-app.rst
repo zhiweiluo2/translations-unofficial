@@ -7,46 +7,43 @@
 .. _testnet-get-the-app:
 
 =======================================
-Concordium ID: Install the app
+Concordium ID: 安装应用
 =======================================
 
 .. contents::
    :local:
    :backlinks: none
 
-By reading this section and the following *Concordium* ID sections, you will get an
-overview of the basic functionality of the app. If you have never used Concordium
-ID or similar apps, this is a good place to get started.
+通过阅读本节和以下 Concordium ID部分，您将获得应用程序基本功能概述。如果你从未使用过 Concordium ID或类似的应用程序，这是一个很好的开始。
 
-The ConcordiumID app is available for Android and iOS phones. Depending on what
-platform you are using, the way of installing the app differs slightly.
+Concordium ID 应用程序可用于Android和iOS手机。根据您使用的平台，安装应用程序的方式略有不同。
 
-
-Installation on Android
+在Android上安装
 =======================
 
-Installation requirements: Android 8 or newer.
+安装要求：Android 8或更高版本。
 
-1. Download the `Concordium ID APK`_ to your phone.
-2. You may see a warning about downloading the .apk-file. If you are asked whether you want to keep the .apk-file, press **OK**.
-3. After opening the .apk-file, you may see a warning saying that your phone is not allowed to install apps from this source. Press **Settings**, toggle **Allow from this source** and go back.
-4. You are now asked if you want to install the application. Press **Install**.
+1. 将 `Concordium ID APK`_ 下载到您的手机。
+2. 您可能会看到关于下载.apk文件的警告。如果询问您是否要保留.apk文件，请按 **确定** 。
+3. 打开.apk文件后，您可能会看到一条警告，表示不允许您的手机安装来自此源的应用程序。按 **设置** ， **从此来源** 切换 **允许** ，然后返回。
+4. 现在会询问您是否要安装该应用程序。按 **安装** 。
 
-
-Installation on iOS
+在iOS上安装
 ====================
 
-Installation requirements: iOS 13 or newer.
+安装要求：iOS 13或更高版本。
 
-Installing the Concordium ID app on iOS requires installation of Apple’s TestFlight app, which is used to distribute beta versions of iOS apps.
-
-1. Install `TestFlight`_ via App Store.
-2. Join our `TestFlight beta program`_ via your iPhone (it works best if you click the link directly on your iPhone), and follow the steps shown in there, to add Concordium ID to TestFlight.
-3. Open the TestFlight app on your iPhone and install Concordium ID.
+在 iOS 上安装 Concordium ID应用程序需要安装 Apple 的 TestFlight 应用程序，该应用程序用于分发Beta版的iOS应用程序。
 
 
-Support & Feedback
+1.通过App Store安装 `TestFlight`_ .
+
+2.通过您的iPhone加入我们的 `TestFlight beta program`_ （如果您直接在iPhone上单击链接，则效果最佳），然后按照其中显示的步骤将Concordium ID添加到TestFlight。
+
+3.在iPhone上打开TestFlight应用程序，然后安装Concordium ID。
+
+
+支持与反馈
 ==================
 
-If you run into any issues or have suggestions, post your question or
-feedback on `Discord`_, or contact us at testnet@concordium.com.
+如果您遇到任何问题或建议，请在 `Discord`_ 上发布您的问题或反馈，或通过 testnet@concordium.com 与我们联系。
