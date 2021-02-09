@@ -11,32 +11,32 @@
    :local:
    :backlinks: none
 
-在本指南中，您将学习如何在计算机上运行参与Concordium网络的节点。这意味着您将从其他节点接收块和事务，并将有关块和事务的信息传播到Concordium网络中的节点。遵循本指南后，您将能够
+在本指南中，您将学习如何在计算机上运行参与 Concordium 网络的节点。这意味着您将从其他节点接收块和事务，并将有关块和事务的信息传播到 Concordium 网络中的节点。遵循本指南后，您将能够
 
--  运行一个Concordium节点
+-  运行一个 Concordium 节点
 -  在网络仪表板上观察它，并
--  直接从您的机器查询Concordium区块链的状态。
+-  直接从您的机器查询 Concordium 区块链的状态。
 
 您不需要帐户即可运行节点。
 
 在你开始之前
 ================
 
-在运行Concordium节点之前，您需要
+在运行 Concordium 节点之前，您需要
 
 
-1. 安装并运行Docker。
+1. 安装并运行 Docker。
 
-   -  在Linux上，允许Docker以非root用户身份运行。
+   -  在Linux上，允许 Docker 以非 root用户身份运行。
 
-2. 下载并解压缩concordium-node-and-client-download软件。
+2. 下载并解压缩 :ref:`concordium-node-and-client-download` 软件。
 
 从早期版本的Open Testnet升级
 ===============================================
 
 要升级到用于Open Testnet 4的当前Concordium软件，请执行以下操作：
 
-- 请按照上述步骤操作，以下载最新的Concordium软件。
+- 请按照上述步骤操作，以 :ref:`下载<downloads>` 最新的Concordium软件。
 
 
 -  concordium-node-reset-data从解压缩的存档中运行可执行文件。
