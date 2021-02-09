@@ -36,4 +36,4 @@
 智能合约的生命周期
 ==============================
 
-智能合约首先作为: ref:`contract module<contract module>` 的一部分部署到链中。然后，可以初始化智能合约以生成: ref:`smart contract instance<contract instances>` 。最后，智能合约实例可以根据其自身的逻辑进行重复更新。
+智能合约首先作为 :ref:`contract module<contract module>` 的一部分部署到链中。然后，可以初始化智能合约以生成 :ref:`smart contract instance<contract instances>` 。最后，智能合约实例可以根据其自身的逻辑进行重复更新。
