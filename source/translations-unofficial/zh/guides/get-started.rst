@@ -11,7 +11,7 @@ Concordium ID：开始使用该应用
    :local:
    :backlinks: none
 
-在按照本指南进行操作之前，您应该已经完成​​Concordium ID的安装，如 上一章 chapter<testnet-get-the-app> 中所述  。
+在按照本指南进行操作之前，您应该已经完成​​Concordium ID的安装，如 上一章<testnet-get-the-app> 中所述  。
 
 设置密码和生物识别
 ================================
