@@ -5,106 +5,90 @@
 .. _compile-module:
 
 ====================================
-Compile a Rust smart contract module
+编译Rust智能合约模块
 ====================================
 
-This guide will show you how to compile smart contract module written in Rust to
-a Wasm module.
+本指南将向您展示如何将用Rust编写的智能合约模块编译为Wasm模块。
 
-Preparation
+制备
 ===========
 
-Make sure to have Rust and Cargo installed and the ``wasm32-unknown-unknown``
-target, together with ``cargo-concordium`` and the Rust source code for a smart
-contract module, you wish to compile.
+确保已安装Rust和 ``wasm32-unknown-unknown`` ， ``cargo-concordium``  并且要编译目标，目标以及智能合约模块的Rust源代码。
 
-.. seealso::
+.. 也可以看看：：
 
-   For instructions on how to install the developer tools see
-   :ref:`setup-tools`.
+   有关如何安装开发人员工具的说明，请参见
+   设置工具
 
-Compiling to Wasm
+编译为Wasm
 =================
 
-To help building smart contract modules and to take advantage of features
-such as :ref:`contract schemas <contract-schema>`, we recommend using the
-``cargo-concordium`` tool for building Rust_ smart contracts.
+为了帮助构建智能合约模块并利用 :ref:`contract schemas <contract-schema>` 之类的功能，我们建议使用该 ``cargo-concordium``  工具来构建Rust智能合约。
 
-In order to build a smart contract, run:
+为了建立智能合约，请运行：
 
 .. code-block:: console
 
    $cargo concordium build
 
-This uses Cargo_ for building, but runs further optimizations on the result.
+这使用Cargo进行构建，但会对结果进行进一步的优化。
 
-.. seealso::
+.. 也可以看看：：
 
-   For building the schema for a smart contract module, some :ref:`further
-   preparation is required <build-schema>`.
+   为了构建智能合约模块的架构，请参考
+   需要准备<build-schema>`。
 
-.. note::
+.. 注意::
 
-   It is also possible to compile using Cargo_ directly by running:
+   也可以通过运行以下命令直接使用Cargo进行编译：
 
    .. code-block:: console
 
       $cargo build --target=wasm32-unknown-unknown [--release]
 
-   Note that even with ``--release`` set, the produced Wasm module includes
-   debug information.
+   请注意，即使已 ``--release`` 设置，产生的Wasm模块也包含调试信息。
+   
 
-Removing host information from build
+从构建中删除主机信息
 ====================================
 
-The compiled Wasm module can contain information from the host machine building
-the binary; information such as the absolute path of the ``.cargo`` directory.
+编译后的Wasm模块可以包含来自构建二进制文件的主机的信息。信息，例如 ``.cargo`` 目录的绝对路径。
 
-For most people this is not sensitive information, but it is important to be
-aware of it.
+对于大多数人来说，这不是敏感信息，但重要的是要意识到这一点。
 
-On Linux the paths can be inspected by running:
+在Linux上，可以通过运行以下命令检查路径：
 
 .. code-block:: console
 
    strings contract.wasm | grep /home/
 
-.. rubric:: The solution
+.. rubric:: 解决方案
 
-The ideal solution would be to remove this path entirely, but that is
-unfortunately not a trivial task in general.
+理想的解决方案是完全删除该路径，但是不幸的是，这通常不是一件容易的事。
 
-It is possible to work around the issue by using the ``--remap-path-prefix``
-flag when compiling the contract.
-On Unix-like systems the flag can be passed directly to the ``cargo concordium``
-invocation using the ``RUSTFLAGS`` environment variable:
+``--remap-path-prefix`` 编译合同时可以通过使用标志来解决此问题。在类Unix的系统上，可以 ``cargo concordium`` 使用  ``RUSTFLAGS`` 环境变量将标志直接传递给调用：
 
 .. code-block:: console
 
    $RUSTFLAGS="--remap-path-prefix=$HOME=" cargo concordium build
 
-Which will replace the users home path with the empty string. Other paths could
-be mapped in a similar way. In general using ``--remap-path-prefix=from=to``
-will map ``from`` to ``to`` at the beginning of any embedded path.
+它将用空字符串替换用户的主路径。其他路径可以以类似方式映射。通常，using  ``--remap-path-prefix=from=to`` 将映射 ``from`` 到  ``to`` 任何嵌入式路径的开头。
 
-The flag can also be set permanently in the ``.cargo/config`` file in your
-crate, under the build section:
+也可以 ``.cargo/config`` 在构建部分下的箱子中的文件中永久设置该标志：
 
 .. code-block:: toml
 
    [build]
    rustflags = ["--remap-path-prefix=/home/<user>="]
 
-where `<user>` should be replaced with the user building the wasm module.
+其中 `<user>` 应该用构建wasm模块的用户替换。
 
-Caveats
+注意事项
 -------
 
-The above will likely not fix the issue if the ``rust-src`` component is
-installed for the Rust toolchain. This component is needed by some Rust tools
-such as the rust-analyzer_.
+如果 ``rust-src`` 为Rust工具链安装了组件，则以上内容可能无法解决该问题。一些Rust工具（例如 rust-analyzer_.）需要此组件。
 
-.. seealso::
+.. 另::
 
-   An issue reporting the problem with ``--remap-path-prefix`` and ``rust-src``
+   一个报告--remap-path-prefix和rust-src问题的问题
    https://github.com/rust-lang/rust/issues/73167
