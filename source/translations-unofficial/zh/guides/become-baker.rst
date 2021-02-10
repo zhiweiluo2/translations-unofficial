@@ -14,7 +14,7 @@
    :backlinks: none
 
 
-本节说明面包师是什么，baker在网络中的角色以及如何成为面包师。
+本节说明 baker 是什么，baker 在网络中的角色以及如何成为baker 。
 
 通过阅读本节，您将学到：
 
@@ -24,15 +24,15 @@
 成为baker的过程可以概括为以下步骤：
 
    1. 获取一个帐户和一些GTU。
-   2. 获取一组baker键。
-   3. 将baker密钥注册到该帐户。
-   4. 使用baker键启动节点。
+   2. 获取一组 baker 键。
+   3. 将 baker 密钥注册到该帐户。
+   4. 使用 baker 键 启动节点。
 
-完成这些步骤后，baker节点将烘烤块。如果将烘焙块添加到链中，则节点的baker将获得奖励。
+完成这些步骤后，baker 节点将烘烤块。如果将烘焙块添加到链中，则节点的 baker 将获得奖励。
 
 .. 注意::
 
-   在本节中，我们将使用名称bakerAccount作为将用于注册和管理baker的帐户的名称。
+   在本节中，我们将使用名称 ``bakerAccount`` 作为将用于注册和管理 baker 的帐户的名称。
 
 定义
 ===========
@@ -45,7 +45,7 @@ Baker
 Baker 键
 ----------
 
-每个Baker都有一组称为Baker密钥的加密密钥。节点使用这些键对它烘烤的块进行签名。为了烘焙由特定Baker签名的块，该节点必须在加载其Baker克密钥集的情况下运行。
+每个Baker都有一组称为Baker密钥的加密密钥。节点使用这些键对它烘烤的块进行签名。为了烘焙由特定 Baker 签名的块，该节点必须在加载其Baker克密钥集的情况下运行。
 
 Baker 账户
 -------------
@@ -69,7 +69,7 @@ Baker 账户
 
 为了被选择用于烘烤一块，Baker必须参加彩票，在该 彩票中获得中奖彩票的概率与所下注的数量大致成比例。
 
-在计算Baker是否包含在最终委员会中时，使用相同的股份。请参阅完成。
+在计算Baker是否包含在最终委员会中时，使用相同的股份。请参阅 **完成** 。
 
 .. _epochs-and-slots:
 
@@ -82,7 +82,7 @@ Baker 账户
 
    让我们添加一张图片。
 
-在考虑奖励和其他与烘焙相关的概念时，我们使用时期的概念作为时间单位，它定义了固定当前Baker和赌注的时间段。纪元的时长固定在“创世纪”块。在测试网中，纪元的持续时间为1小时。
+在考虑奖励和其他与烘焙相关的概念时，我们使用时期的概念作为时间单位，它定义了固定当前Baker和赌注的时间段。纪元的时长固定在 **“创世纪”** 块。在测试网中，纪元的持续时间为 **1小时**。
 
 开始烘烤
 ============
@@ -90,9 +90,9 @@ Baker 账户
 管理账户
 -----------------
 
-本节简要介绍了导入帐户的相关步骤。有关完整的说明，请参见：ref.`managing_accounts`。
+本节简要介绍了导入帐户的相关步骤。有关完整的说明，请参见： :ref:`managing_accounts`。
 
-使用：ref：`concordium_id`应用程序创建帐户。成功创建帐户后，导航至“更多”选项卡并选择“导出” 即可获取包含帐户信息的JSON文件。
+使用： :ref:`concordium_id`  应用程序创建帐户。成功创建帐户后，导航至 **“更多”** 选项卡并选择 **“导出”** 即可获取包含帐户信息的JSON文件。
 
 要将帐户导入工具链运行
 
@@ -100,7 +100,7 @@ Baker 账户
 
    $ concordium-client配置帐户导入<路径/到/导出/文件> --name bakerAccount
 
-concordium-client将要求输入密码以解密导出的文件并导入所有帐户。相同的密码将用于加密交易签名密钥和加密的转移密钥。
+``concordium-client`` 将要求输入密码以解密导出的文件并导入所有帐户。相同的密码将用于加密交易签名密钥和加密的转移密钥。
 
 为 baker 创建密钥并注册
 --------------------------------------------
@@ -109,7 +109,7 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
    对于此过程，该帐户需要拥有一些GTU，因此请确保在移动应用程序中请求该帐户的100 GTU下降。
 
-每个帐户都有一个唯一的baker ID，该ID在注册其baker时使用。该ID必须由网络提供，并且当前无法预先计算。必须在baker密钥文件中将此ID赋予节点，以便它可以使用baker密钥创建块。concordium-client执行以下操作时，会自动填充此字段。
+每个帐户都有一个唯一的baker ID，该ID在注册其baker时使用。该ID必须由网络提供，并且当前无法预先计算。必须在baker密钥文件中将此ID赋予节点，以便它可以使用baker密钥创建块。 ``concordium-client`` 执行以下操作时，会自动填充此字段。
 
 要创建一组新的键，请运行：
 
@@ -117,7 +117,7 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
   $concordium-client baker generate-keys <keys-file>.json
 
-您可以在其中为密钥文件选择一个任意名称。要在网络中注册密钥，您需要：运行节点<running-a-node> 并将baker add事务发送到网络：
+您可以在其中为密钥文件选择一个任意名称。要在网络中注册密钥，您需要运行节点 :ref:`running a node <running-a-node>` 并将 ``baker add`` 事务发送到网络：
 
 .. code-block:: console
 
@@ -125,18 +125,18 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
 更换
 
-- <amountToStake> 面包师初始股份的GTU金额
-- <concordium-data-dir> 具有以下数据目录：
-  * 在Linux和MacOS上： ~/.local/share/concordium
-  * 在Windows上：%LOCALAPPDATA%\\concordium。
+- ``<amountToStake>`` 面包师初始股份的GTU金额
+- ``<concordium-data-dir>``  具有以下数据目录：
+  * 在Linux 和 MacOS 上： ``~/.local/share/concordium``
+  * 在 Windows 上： ``%LOCALAPPDATA%\\concordium`` 。
 
-（输出文件名应保留baker-credentials.json）。
+（输出文件名应保留 ``baker-credentials.json``）。
 
-提供一个--no-restake标志，以避免自动将奖励添加到baker的抵押金额上。此行为在“重新获得收入”部分中进行了描述。
+提供一个 ``--no-restake`` 标志，以避免自动将奖励添加到 baker 的抵押金额上。此行为在 **“重新获得收入”**部分中 **进行了** 描述。
 
-为了使用这些baker键启动节点并开始生成块，您首先需要关闭当前正在运行的节点（通过Ctrl + C在运行该节点的终端上按 或使用 concordium-node-stop可执行文件）。
+为了使用这些 baker 键 启动节点并开始生成块，您首先需要关闭当前正在运行的节点（通过``Ctrl + C`` 在运行该节点的终端上按 或 使用 ``concordium-node-stop`` 可执行文件）。
 
-将文件放置在适当的目录中之后（指定输出文件时已在上一个命令中完成），然后使用再次启动节点 concordium-node。当baker包含在当前时代的baker中时，该节点将自动开始烘焙。
+将文件放置在适当的目录中之后（指定输出文件时已在上一个命令中完成），然后使用再次启动节点 ``concordium-node`` 。当 baker 包含在当前时代的 baker 中时，该节点将自动开始烘焙。
 
 此更改将立即执行，并且在将添加baker的事务包含在一个块中的那个之后的纪元完成时生效。
 
@@ -152,7 +152,7 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
 .. 注意::
 
-  如果在阶段E的某个区块中包含添加面包师的事务，则在纪元E + 2开始时，该面包师将被视为烘焙委员会的一部分。
+  如果在阶段E的某个区块中包含添加面包师的事务，则在纪元 E + 2 开始时，该面包师将被视为烘焙委员会的一部分。
 
 管理baker
 ==================
@@ -162,8 +162,8 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
 为了查看节点是否正在烘焙，您可以检查显示的信息中提供不同精确度的各种来源。
 
-- 在网络仪表板中，您的节点将在Baker列中显示其BakerID 。
-- 使用，concordium-client您可以检查当前Baker的列表以及他们持有的相对赌注数量，即他们的彩票能力。彩票的力量将决定给定的Baker赢得彩票并烘烤一个块的可能性。
+- 在**网络仪表板** 中，您的节点将在 ``Baker`` 列中显示其BakerID 。
+- 使用  ``concordium-client`` 您可以检查当前Baker的列表以及他们持有的相对赌注数量，即他们的彩票能力。彩票的力量将决定给定的Baker赢得彩票并烘烤一个块的可能性。
 
   .. code-block:: console
 
@@ -177,7 +177,7 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
          34: 4p2n8QQn5akq3XqAAJt2a5CsnGhDvUon6HExd2szrfkZCTD4FX   <0.0001
          ...
 
-- 使用，concordium-client您可以检查帐户是否已注册baker以及该baker已抵押的当前金额。
+- 使用  ``concordium-client`` 您可以检查帐户是否已注册baker以及该baker已抵押的当前金额。
 
   .. code-block:: console
 
@@ -206,7 +206,7 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
 修改放样量将修改选择baker烘烤块的概率。
 
-当baker第一次增加股份或增加股份时，该更改将在链上执行，并在交易包含在一个区块中（可以通过看到concordium-client account show bakerAccount）后立即可见，并在此之后的2个星期生效。
+当baker **第一次增加股份或增加股份时**，该更改将在链上执行，并在交易包含在一个区块中（可以通过看到 ``concordium-client account show bakerAccount``）后立即可见，并在此之后的2个星期生效。
 .. table:: 时间轴: 增加赌注
 
    +----------------------------------------+-----------------------------------------+----------------+
@@ -217,7 +217,7 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
    | Baker 使用新股份                        |                                         | ✓              |
    +----------------------------------------+-----------------------------------------+----------------+
 
-当baker减少放样量时，更改将需要2 + bakerCooldownEpochs个纪元才能生效。一旦将交易包含在一个区块中，就可以在链上看到更改，可以通过以下方式进行查询 concordium-client account show bakerAccount：
+当baker **减少放样量时** ，更改将需要 2 + bakerCooldownEpochs 个纪元才能生效。一旦将交易包含在一个区块中，就可以在链上看到更改，可以通过以下方式进行查询 ``concordium-client account show bakerAccount`` ：
 
 .. code-block:: console
 
@@ -244,7 +244,7 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
 .. 注意::
 
-  在测试网中，bakerCooldownEpochs最初设置为168个纪元。可以按以下方式检查此值：
+  在测试网中， ``bakerCooldownEpochs`` 最初设置为168个纪元。可以按以下方式检查此值：
 
    .. code-block:: console
 
@@ -255,21 +255,21 @@ concordium-client将要求输入密码以解密导出的文件并导入所有帐
 
 .. 警告::
 
-  如“定义”部分所述，放样金额已锁定，即无法转移或用于付款。您应该考虑到这一点，并考虑存入短期内不需要的金额。特别是，要注销Baker或更改抵押金额，您需要拥有一些未抵押的GTU来支付交易费用。
+  如 **“定义”**部分所述，放样金额已锁定，即无法转移或用于付款。您应该考虑到这一点，并考虑存入短期内不需要的金额。特别是，要注销Baker或更改抵押金额，您需要拥有一些未抵押的GTU来支付交易费用。
 
 重新取得收益
 ----------------------
 
 当以baker的身份参加网络和烘焙块时，该帐户将在每个烘焙块上获得奖励。默认情况下，这些奖励会自动添加到放样金额中。
 
-您可以选择修改此行为，而无需自动投入即可获得帐户余额中的奖励。可以通过concordium-client以下方式更改此开关：
+您可以选择修改此行为，而无需自动投入即可获得帐户余额中的奖励。可以通过 ``concordium-client`` 以下方式更改此开关：
 
 .. code-block:: console
 
    $concordium-client baker update-restake False --sender bakerAccount
    $concordium-client baker update-restake True --sender bakerAccount
 
-对restake标志的更改将立即生效；然而，这些变化开始影响下一个时代的烘烤和终结能力。开关的当前值可以在帐户信息中看到，可以使用concordium-client以下命令查询：
+对restake标志的更改将立即生效；然而，这些变化开始影响下一个时代的烘烤和终结能力。开关的当前值可以在帐户信息中看到，可以使用 ``concordium-client``以下命令查询：
 
 .. code-block:: console
 
