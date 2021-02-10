@@ -15,12 +15,12 @@
 .. _writing-smart-contracts:
 
 ==================================
-Developing smart contracts in Rust
+用Rust开发智能合约
 ==================================
 
-在concordium区块链上，智能合约部署为Wasm模块，但Wasm主要设计为编译目标，不方便手工编写。相反，我们可以用Rust_ 编程语言编写智能合约，它对编译到Wasm有很好的支持。
+在concordium区块链上，智能合约部署为Wasm模块，但Wasm是合约的编译后的指令，不方便手工编写。相反，我们可以用 Rust_ 编程语言编写智能合约，它能很好的支持编译成Wasm。
 
-智能合约不必用铁锈纸写。这只是我们提供的第一个SDK。手动编写的WASM，或者从C、C++、汇编脚本等中编译的WASM，在链上同样有效，只要它遵循：REF: `WASM限制，我们强加<wasm-limitations>` .
+智能合约不必用Rust写。这只是我们提供的第一个SDK。手动编写的WASM，或者从C、C++、AssemblyScript等中编译的WASM，在链上同样有效，只要它遵循 :REF: `WASM限制，我们强加<wasm-limitations>` .
 
 .. seealso::
 
@@ -30,7 +30,7 @@ Developing smart contracts in Rust
 
    See :ref:`contract-module` for more information about smart contract modules.
 
-在Rust中开发了一个智能合约模块作为一个库板条箱，然后编译成Wasm。要获得正确的导出，必须在清单文件中将 `crate-type` 属性设置为 ``["cdylib"，"rlib"]`` :
+用Rust开发了一个智能合约模块作为一个库crate，然后编译成Wasm。要获得正确的导出，必须在manifest文件中将 `crate-type` 属性设置为 ``["cdylib"，"rlib"]`` :
 
 .. code-block:: text
 
@@ -42,9 +42,9 @@ Developing smart contracts in Rust
 Writing a smart contract using ``concordium_std``
 =================================================
 
-建议使用 ``concordium_std`` 板条箱，该板条箱为开发智能合约模块和调用主机函数提供了更像Rust的体验。
+建议使用 ``concordium_std`` crate，用该crate为开发智能合约模块和调用主机函数就像开发Rust一样。
 
-板条箱可将init和receive函数编写为简单的Rust函数，分别使用 ``#[init(...)]`` 和 ``#[receive(...)]`` 进行注释。
+crate可将init和receive函数编写为简单的Rust函数，分别使用 ``#[init(...)]`` 和 ``#[receive(...)]`` 进行注释。
 
 这是实现计数器的智能合约的示例：
 
@@ -72,7 +72,7 @@ Writing a smart contract using ``concordium_std``
        Ok(A::accept())
    }
 
-There are a number of things to notice:
+这里有很多注意事项：
 
 .. todo::
 
@@ -80,18 +80,19 @@ There are a number of things to notice:
    - These requirements should be part of a specification that is written up somewhere,
      i.e., not just as part of this example.
 
-- The type of the functions:
+- 函数类型:
 
-  * An init function must be of type ``&impl HasInitContext -> InitResult<MyState>``
-    where ``MyState`` is a type that implements the ``Serialize`` trait.
+  * 一个init函数必须是一个 ``&impl HasInitContext -> InitResult<MyState>`` 类型，这里的 ``MyState`` 是一个实现了 ``Serialize`` 的类型.
   * A receive function must take a ``A: HasActions`` type parameter,
     a ``&impl HasReceiveContext`` and a ``&mut MyState`` parameter, and return
     a ``ReceiveResult<A>``.
+    receive 函数必须接收一个 ``A: HasActions`` 类型的参数, 一个 ``&impl HasReceiveContext`` 和 ``&mut MyState`` 参数, 以及返回一个 ``ReceiveResult<A>`` 参数.
 
 - The annotation ``#[init(contract = "counter")]`` marks the function it is
   applied to as the init function of the contract named ``counter``.
   Concretely, this means that behind the scenes this macro generates an exported
   function with the required signature and name ``init_counter``.
+  
 
 - ``#[receive(contract = "counter", name = "increment")]`` deserializes and
   supplies the state to be manipulated directly.
@@ -101,7 +102,7 @@ There are a number of things to notice:
 
 .. note::
 
-   请注意，反序列化并不是没有代价的，在某些情况下，用户可能希望对主机函数的使用进行更细粒度的控制。对于这样的用例，注解支持一个 ``低级别`` 的选项，它有较少的开销，但是需要用户提供更多的资源。 
+   请注意，反序列化并不是没有代价的，在某些情况下用户可能希望对主机函数的使用进行更细粒度的控制。对于这样的场景，注解支持一个　``low_level`` 的选项，它有较少的开销，但是需要用户提供更多的资源。 
 
 .. todo::
 
@@ -115,7 +116,7 @@ Serializable state and parameters
 .. todo:: Clarify what it means that the state is exposed similarly to ``File``;
    preferably, without referring to ``File``.
 
-在链上，实例的状态表示为字节数组，并在与Rust标准库的 ``文件`` 接口类似的接口中公开。
+在链上，实例的状态表示为字节数组，并在以Rust标准库的 ``File`` 接口类似的接口中暴露出来。
 
 这可以使用包含（反）序列化函数的 ``Serialize`` trait来完成。
 
@@ -143,7 +144,7 @@ Working with parameters
 
 init和receive函数的参数与实例状态类似，表示为字节数组。虽然字节数组可以直接使用，但它们也可以反序列化为结构化数据。
 
-反序列化参数的最简单方法是通过get trait的 `get()`_ 函数。
+反序列化参数的最简单方法是通过 `get`_ trait的 `get()`_ 函数。
 
 例如，请参见以下协定，其中参数 ``ReceiveParameter`` 在突出显示的行上反序列化：
 
@@ -204,51 +205,44 @@ init和receive函数的参数与实例状态类似，表示为字节数组。虽
 
 请注意，只有当 ``should_add`` 为 ``true`` 时，才会反序列化该值。虽然在这个例子中，效率的提高是最小的，但对于更复杂的例子，它可能会产生实质性的影响。
 
-Building a smart contract module with ``cargo-concordium``
+用 ``cargo-concordium`` 构建一个智能合约模块
 ==========================================================
 
-The Rust compiler has good support for compiling to Wasm using the
-``wasm32-unknown-unknown`` target.
-However, even when compiling with ``--release`` the resulting build includes
-large sections of debug information in custom sections, which are not useful for
-smart contracts on-chain.
+Rust编译器很好地支持使用 ``wasm32-unknown-unknown`` 目标编译到Wasm。但是，即使在使用 ``--release`` 进行编译时，生成的构建也会在自定义部分中包含大量调试信息，这是没有用的
 
-To optimize the build and allow for new features such as embedding schemas, we
-recommend using ``cargo-concordium`` to build smart contracts.
+为了优化构建并允许嵌入模式等新功能，我们建议使用 ``cargo-concordium`` 来构建智能合约。
 
 .. seealso::
 
-   For instructions on how to build using ``cargo-concordium`` see
-   :ref:`compile-module`.
+   关于使用 ``cargo-concordium`` 构建的说明请参考 :ref:`compile-module`
 
-
-Testing smart contracts
+测试智能合约
 =======================
 
-Unit tests with stubs
+使用stubs进行单元测试
 ---------------------
 
-Simulate contract calls
+模拟合约调用
 -----------------------
 
-Best practices
+最佳实践
 ==============
 
-Don't panic
+不要担心
 -----------
 
 .. todo::
 
    Use trap instead.
 
-Avoid creating black holes
+避免创建黑洞
 --------------------------
 
 智能合约不需要使用发送给它的GTU数量，默认情况下，智能合约不定义清空实例余额的任何行为，以防有人发送一些GTU。这些GTU将永远 *失去* ，也没有办法找回它们。
 
 因此，对于不处理GTU的智能合约来说，最好确保GTU的发送量为零，并拒绝任何不处理GTU的调用。
 
-Move heavy calculations off-chain
+将繁重的计算任务移到链下
 ---------------------------------
 
 
@@ -259,3 +253,4 @@ Move heavy calculations off-chain
 .. _Get: https://docs.rs/concordium-std/latest/concordium_std/trait.Get.html
 .. _Read: https://docs.rs/concordium-std/latest/concordium_std/trait.Read.html
 .. _concordium_std: https://docs.rs/concordium-std/latest/concordium_std/
+
