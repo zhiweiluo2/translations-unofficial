@@ -43,14 +43,19 @@
 为了生成并包括合同状态的模式，我们用 ``#[contract_state(contract = ...)]`` 宏注释类型：
  
    #[contract_state(contract = "my_contract")]
+
    #[derive(SchemaType)]
+
    struct MyState {
+
        ...
+
    }
 
 如果合同状态是已经实现的类型，甚至更简单SchemaType，例如u32：
 
    #[contract_state(contract = "my_contract")]
+
    type State = u32;
 
 包括功能参数
@@ -59,15 +64,19 @@
 要生成并包含用于初始化和接收函数的参数的模式，我们为 ``#[init(..)]`` -和 ``#[receive(..)]`` -宏设置了可选的 ``parameter`` 属性： ：
  
    #[derive(SchemaType)]
+
    enum InitParameter { ... }
 
    #[derive(SchemaType)]
+
    enum ReceiveParameter { ... }
 
    #[init(contract = "my_contract", parameter = "InitParameter")]
+
    fn contract_init<...> (...){ ... }
 
    #[receive(contract = "my_contract", name = "my_receive", parameter = "ReceiveParameter")]
+
    fn contract_receive<...> (...){ ... }
 
 
