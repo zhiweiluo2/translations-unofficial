@@ -4,13 +4,13 @@
 建立使用 ``no_std``
 ======================
 
-本指南说明了如何启用 ``no_std``  rust智能合约，从而有可能将生成的Wasm模块的大小减少几千字节。
+本指南说明了如何启用 ``no_std``  rust 智能合约，从而有可能将生成的 Wasm 模块的大小减少几千字节。
 
 
 制备
 ===========
 
-``concordium-std`` 没有该 ``std`` 功能的编译需要使用rust每晚工具链，可以使用 ``rustup`` 以下方法安装：
+``concordium-std`` 没有该 ``std`` 功能的编译需要使用 rust 每晚工具链，可以使用 ``rustup`` 以下方法安装：
 
 .. code-block:: console
 
@@ -19,12 +19,6 @@
 设置用于 ``no_std``
 ====================================
 
-The ``concordium-std`` library exposes a ``std`` feature, which enables the use
-of the rust standard library.
-This feature is enabled by default.
-
-To disable it, one must simply disable default features for the
-``concordium-std`` in the dependencies of your module.
 
 该 ``concordium-std`` 库公开了一项 ``std`` 功能，该功能可以使用 rust 标准库。默认情况下启用此功能。
 
@@ -35,7 +29,7 @@ To disable it, one must simply disable default features for the
    [dependencies]
    concordium-std = { version: "=0.2", default-features = false }
 
-为了能够在有和没有 ``std`` 之间切换，还 ``std`` 可以在自己的模块中添加a ，以启用以下``std`` 功能``concordium-std``：
+为了能够在有和没有 ``std`` 之间切换，还 ``std`` 可以在自己的模块中添加a ，以启用以下 ``std`` 功能 ``concordium-std`` ：
 
 .. code-block:: rust
 

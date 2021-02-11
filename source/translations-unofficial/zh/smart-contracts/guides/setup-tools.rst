@@ -1,56 +1,45 @@
 .. _setup-tools:
 
 =============================
-Install tools for development
+安装开发工具
 =============================
 
-Before we can start developing smart contracts, we need to setup the
-environment.
+在开始开发智能合约之前，我们需要设置环境。
 
-Rust and Cargo
+铁锈和货物
 ==============
 
-First, `install rustup`_, which will install both Rust_ and Cargo_ on your
-machine.
-Then use ``rustup`` to install the Wasm target, which is used for compilation:
+首先， `安装 rustup`_，它将在您的计算机上同时安装 Rust_ 和 Cargo_ 。然后使用rustup来安装用于编译的Wasm目标：
 
 .. code-block:: console
 
    $rustup target add wasm32-unknown-unknown
 
-Cargo Concordium
+货运货运
 ================
 
-Cargo Concordium is the tool for developing smart contracts for the Concordium
-blockchain.
-It can be used for :ref:`compiling<compile-module>` and
-:ref:`testing<unit-test-contract>` smart contracts, and enables features such as
-:ref:`building contract schemas<build-schema>`.
+Cargo Concordium是为Concordium区块链开发智能合约的工具。它可用于 :ref:`compiling<compile-module>`   和 :ref:`testing<unit-test-contract>` 智能合约，并启用诸如 ：:ref:`building contract schemas<build-schema>`  之类的功能。 `。
 
 .. todo::
 
-   Add links for testing and schemas.
+   添加用于测试和架构的链接。
 
-Cargo Concordium is distributed as part of the :ref:`Concordium software<downloads>` package.
-The tool should be placed in your PATH.
+Cargo Concordium是 :ref:`Concordium software<downloads>` 软件包的一部分分发。该工具应放在您的PATH中。
 
-For a description of how to use the Cargo Concordium run:
+有关如何使用货运协和车的说明：
 
 .. code-block:: console
 
    $cargo concordium --help
 
-Concordium software
+Concordium 软件
 ===================
 
-The tool to deploy and interact with smart contracts is
-:ref:`concordium-client<concordium_client>`. It is distributed as part of the
-:ref:`Concordium software<downloads>` package.
+部署智能合约并与之交互的工具是 :ref:`concordium-client<concordium_client>` 。它作为 :ref:`Concordium software<downloads>` 软件包的一部分分发 。
 
 .. note::
 
-   To deploy smart contract modules and interact with the chain, make sure
-   that you are :ref:`running a node<run-a-node>`.
+   要部署智能合约模块并与链进行交互，请确保您正在 :ref:`running a node<run-a-node>`.
 
 .. _Rust: https://www.rust-lang.org/
 .. _Cargo: https://doc.rust-lang.org/cargo/

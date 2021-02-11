@@ -3,54 +3,40 @@
 .. _setup-contract:
 
 ===================================
-Setting up a smart contract project
+设置智能合约项目
 ===================================
 
-A smart contract in Rust is written as an ordinary Rust library crate.
-The library is then compiled to Wasm using the Rust target
-``wasm32-unknown-unknown`` and, since it is just a Rust library, we can use
-Cargo_ for dependency management.
+Rust中的智能合约被编写为普通的Rust库箱。然后使用Rust目标将该库编译为Wasm ``wasm32-unknown-unknown`` ，由于它只是一个Rust库，因此我们可以使用 Cargo_ 进行依赖项管理。
 
-To set up a new smart contract project, first create a project directory. Inside
-the project directory run the following in a terminal:
+要设置新的智能合约项目，请首先创建一个项目目录。在项目目录中，在终端中运行以下命令：
 
 .. code-block:: console
 
    $cargo init --lib
 
-This will set up a default Rust library project by creating a few files and
-directories.
-Your directory should now contain a ``Cargo.toml`` file and a ``src``
-directory and some hidden files.
+这将通过创建一些文件和目录来设置默认的Rust库项目。您的目录现在应该包含一个 ``Cargo.toml`` 文件和一个 ``src`` 目录以及一些隐藏文件。
 
-To be able to build Wasm we need to tell cargo the right ``crate-type``.
-This is done by adding the following in the file ``Cargo.toml``::
+为了建造Wasm，我们需要告诉货物正确的权利 ``crate-type`` 。这是通过在文件中添加以下内容来完成的 ``Cargo.toml``::
 
    [lib]
    crate-type = ["cdylib", "rlib"]
 
-Adding the smart contract standard library
+添加智能合约标准库
 ==========================================
 
-The next step is to add ``concordium-std`` as a dependency.
-It is a library for Rust containing procedural macros and functions for
-writing small and efficient smart contracts.
+下一步是添加 ``concordium-std`` 为依赖项。它是一个用于Rust的库，其中包含程序宏和用于编写小型高效的智能合约的函数。
 
-The library is added by opening ``Cargo.toml`` and adding the line
-``concordium-std = "*"`` (preferably, replace the `*` with the latest version of `concordium-std`_) in
-the ``[dependencies]`` section::
+通过在以下部分中打开 ``Cargo.toml`` 并添加以下行 来添加该库 ``concordium-std = "*"`` （最好将*替换为最新版本的 `concordium-std`_） ``[dependencies]`` ：
 
    [dependencies]
    concordium-std = "0.4"
 
-The crate documentation can be found on docs.rs_.
+箱子文档可在 docs.rs_ 上找到。
 
-.. note::
+.. 注意::
 
-   If you wish to use a modified version of this crate, you will have to clone
-   the repository with ``concordium-std`` and have the dependency point at the
-   directory instead, by adding the following to ``Cargo.toml``::
-
+如果您想使用此板条箱的修改版，则必须 ``concordium-std`` 通过将以下内容添加到来克隆存储库，并在目录中具有依赖点 ``Cargo.toml``::
+   
       [dependencies]
       concordium-std = { path = "./path/to/concordium-std" }
 
@@ -61,4 +47,4 @@ The crate documentation can be found on docs.rs_.
 .. _docs.rs: https://docs.rs/crate/concordium-std/
 .. _`concordium-std`: https://docs.rs/crate/concordium-std/
 
-That is it! You are now ready to develop your own smart contract.
+这就对了！现在您可以开发自己的智能合约了。

@@ -4,32 +4,24 @@
 .. _testnet-get-started:
 
 =======================================
-Concordium ID: Get started with the app
+Concordium ID：开始使用该应用
 =======================================
 
 .. contents::
    :local:
    :backlinks: none
 
-Before following this guide you should have finished installing Concordium ID, as described in :ref:`the previous chapter<testnet-get-the-app>`.
+在按照本指南进行操作之前，您应该已经完成​​Concordium ID的安装，如 上一章 chapter<testnet-get-the-app> 中所述  。
 
-Set up a passcode and biometrics
+设置密码和生物识别
 ================================
 
-When you open the Concordium ID app for the first time, you will be greeted by a flow
-that will help you setup a passcode and biometric authentication, create an :ref:`glossary-initial-account`,
-and it will also guide you through getting an :ref:`glossary-identity`. The initial account is a special type of account,
-that is submitted to the chain by the :ref:`glossary-identity-provider`, upon creation of an identity. You can make the
-the same transactions from an initial account as from regular accounts, but the owner of the initial account will be
-known by the identity provider. After your identity is created you will be able to submit accounts to the chain
-yourself, and these will be unknown by the identity provider. You can learn more about accounts on the :ref:`Identities
-and accounts<reference-id-accounts>` page.
+首次打开Concordium ID应用程序时，您会受到一个流程的欢迎，该流程将帮助您设置密码和生物特征认证，创建一个 :ref:`glossary-initial-account`,，它还将引导您完成操作。得到一个： :ref:`glossary-identity` 。初始帐户是一种特殊类型的帐户，在创建身份后由  :ref:`the previous chapter<testnet-get-the-app>` 提交给链。您可以使用初始帐户进行的交易与使用常规帐户进行的交易相同，但是身份提供者将知道初始帐户的所有者。创建您的身份后，您将可以自己向该链提交帐户，身份提供者将不知道这些帐户。您可以在上详细了解帐户 :ref:`Identities
+and accounts<reference-id-accounts>` 页面。
 
-The first screen you will meet when opening Concordium ID is this one. It will just explain that
-you have to go through this process to get started.
+打开Concordium ID时遇到的第一个屏幕是这个屏幕。它只会说明您必须经历此过程才能开始。
 
-If you are ready to continue, you can press **Yes, let’s go!** The next screen will ask you to input
-a six-digit passcode. If you would rather use a full password including letters, you can also choose to do so here.
+如果您准备好继续，可以按 **是，开始！**  下一个屏幕将要求您输入六位数的密码。如果您希望使用包含字母的完整密码，也可以在此处选择使用。
 
 .. image:: images/concordium-id/int1.png
       :width: 32%
@@ -38,85 +30,66 @@ a six-digit passcode. If you would rather use a full password including letters,
 
 .. todo::
 
-   Write a directive to make two or more images side-by-side centered
+   编写指令以使两个或更多图像并排居中
 
 
-Having chosen either a passcode or a full password, you will get the option to also use biometrics if your phone
-supports it, i.e. facial recognition or fingerprint. We recommend using biometrics if you have the option to do so.
+选择密码或完整密码后，如果您的手机支持面部识别或指纹识别，您将可以选择也使用生物识别。如果可以选择，我们建议使用生物识别。
 
 .. image:: images/concordium-id/int3.png
       :width: 32%
       :align: center
 
-Request your initial account and identity
+要求您的初始帐户和身份
 =========================================
 
-Next up, you will get a choice between making a new initial account and identity, or importing an already existing set.
-Assuming this is the first time you are using Concordium ID, you can choose **I want to create my initial account** to continue.
+接下来，您将可以选择一个新的初始帐户和身份，或者导入一个已经存在的集合。假设这是您第一次使用Concordium ID，则可以选择" **我要创建我的初始帐户** "以继续。
 
 .. image:: images/concordium-id/int4.png
       :width: 32%
       :align: center
 
 
-On the next screen you will see a description of what the initial account is and the three steps you have to finish to get it,
-along with your identity. In short, the initial account is an account submitted to the chain by the identity provider of your
-choice, which means they will know that you are the owner of the account. Later you will be able to submit accounts to the
-chain by yourself, which means the owner of these accounts will be only known by you.
+在下一个屏幕上，您将看到有关初始帐户的描述以及获得该帐户必须完成的三个步骤以及您的身份。简而言之，初始帐户是您所选择的身份提供者提交给链的帐户，这意味着他们将知道您是该帐户的所有者。之后，您将能够自己将帐户提交到链中，这意味着这些帐户的所有者只有您自己知道。
 
 .. image:: images/concordium-id/int5.png
       :width: 32%
       :align: center
 
-The three steps mentioned above are:
+上面提到的三个步骤是：
 
-1. Naming of your initial account
-2. Naming your identity
-3. Requesting the initial account and identity from an :ref:`glossary-identity-provider` of your choice
+1. 初始帐户的命名
+2. 命名您的身份
+3. 从您选择的 :ref:`glossary-identity-provider` 请求初始帐户和身份
 
-You will meet the first step on the next page, which prompts you to enter a name for your initial account. Pressing continue
-will take you to the next page, on which you have to name your identity. Both of these names will only be known by yourself,
-so you can name them more or less whatever you want (There are a few constraints on what letters and signs you can use).
+您将在下一页遇到第一步，提示您输入初始帐户的名称。按下继续将带您进入下一页，您必须在其上命名您的身份。这两个名称只会由您自己知道，因此您可以根据自己的喜好或多或少地给它们命名（可以使用的字母和符号有一些限制）。
 
-In the example below, we choose to call our initial account *Example Account 1* and our identity *Example Identity*. As
-mentioned, you can choose whichever names you want.
+在下面的示例中，我们选择将初始帐户称为示例帐户1，并将其称为示例身份。如前所述，您可以选择所需的名称。
 
 .. image:: images/concordium-id/int6.png
       :width: 32%
 .. image:: images/concordium-id/int7.png
       :width: 32%
 
-By pressing **Continue to identity providers**, you will be taken to a page where you have to choose between *identity providers*.
-An identity provider is an external entity who will verify who you are, before returning an identity object to be used on the chain.
-For now you can choose between:
+按 **继续身份提供商**, 您将被带到一个页面，您必须在身份提供商之间进行选择。身份提供者是一个外部实体，它将在返回要在链上使用的身份对象之前，验证您的身份。目前，您可以选择以下选项：
 
-* *Notabene Development* which will give you a test identity without real life identity verification.
-* *Notabene* via which your real life identity will be verified.
+* *您将被带到一个页面，您必须在身份提供商之间进行选择。身份提供者是一个外部实体，它将在返回要在链上使用的身份对象之前，验证您的身份。目前，您可以选择以下选项：
+* *Notabene，通过它可以验证您的真实身份。
 
 .. image:: images/concordium-id/int8.png
       :width: 32%
       :align: center
 
-By choosing Notebene Development, you will be given a test identity without further ado. If you choose Notabene you will be taken
-to their external identity issuance flow, which will guide you through the process of getting verified for an identity object.
-After finishing this flow, you will be taken back to Concordium ID.
+通过选择Notebene Development，您将获得一个测试身份，而无需再费力。如果选择Notabene，则将转到其外部身份发布流程，它将引导您完成为身份对象进行验证的过程。完成此流程后，将带您回到Concordium ID。
 
-After finishing either of the identity issuance flows, you will be met with the following screen. It will show you an overview
-of your identity and the initial account.
+完成任何一个身份发放流程之后，将出现以下屏幕。它将向您显示您的身份和初始帐户的概述。
 
 .. image:: images/concordium-id/int9.png
       :width: 32%
       :align: center
 
-Depending on the identity provider you have chosen, the layout of the identity card might differ slightly. You can see that the
-Example Account 1 is held by the identity Example Identity. The account created during this process will be marked with *(Initial)*
-in the app, so you know which account is the initial account submitted to the chain by the identity provider.
+根据您选择的身份提供商，身份证的布局可能会略有不同。您可以看到示例帐户1由身份示例身份持有。在此过程中创建的帐户将 在应用程序中标记为（Initial），因此您知道哪个帐户是身份提供者提交给链的初始帐户。
 
-By pressing **Finish** you will be taken to the *Accounts screen*. On this screen you will be able to see your newly created initial
-account. It might be showing a *Pending icon*, which means the identity provider is still working on submitting and creating your
-initial account and identity. You can also navigate to the *Identities screen* by clicking on **Identities** at the bottom of the
-display. On this screen you can see your newly created identity, which might also still be pending in case the identity provider
-has not finished it yet. All you have to do now, is wait for them to finish.
+按" **完成** "，您将进入“帐户”屏幕。在此屏幕上，您将能够看到您新创建的初始帐户。它可能显示Pending图标，这意味着身份提供者仍在致力于提交和创建您的初始帐户和身份。您也可以通过单击显示屏底部的" **身份** "来导航到 “身份” 屏幕。在此屏幕上，您可以看到您新创建的身份，如果身份提供者尚未完成身份验证，则该身份可能仍处于待处理状态。您现在所要做的就是等待它们完成。
 
 .. image:: images/concordium-id/int10.png
       :width: 32%
@@ -124,8 +97,7 @@ has not finished it yet. All you have to do now, is wait for them to finish.
       :width: 32%
 
 
-Support & Feedback
+支持与反馈
 ==================
 
-If you run into any issues or have suggestions, post your question or
-feedback on `Discord`_, or contact us at testnet@concordium.com.
+如果您遇到任何问题或建议，请在  `Discord`_ 上发布您的问题或反馈，或通过  testnet@concordium.com 与我们联系。
