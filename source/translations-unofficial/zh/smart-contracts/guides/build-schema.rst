@@ -57,7 +57,7 @@
 -----------------------------
 
 要生成并包含用于初始化和接收函数的参数的模式，我们为 ``#[init(..)]`` -和 ``#[receive(..)]`` -宏设置了可选的 ``parameter`` 属性： ：
-
+ 
    #[derive(SchemaType)]
    enum InitParameter { ... }
 
@@ -69,6 +69,7 @@
 
    #[receive(contract = "my_contract", name = "my_receive", parameter = "ReceiveParameter")]
    fn contract_receive<...> (...){ ... }
+
 
 建立架构
 ===================
