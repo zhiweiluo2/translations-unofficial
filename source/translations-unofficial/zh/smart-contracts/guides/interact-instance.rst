@@ -47,6 +47,7 @@
    <contract-schema>`。
 
 要 0 使用 ``my_parameter_receive`` 具有 ``my_parameter.json`` 格式参数文件的 receive 函数 ，通过地址索引更新实例，请运行以下命令：
+
 .. code-block:: console
 
    $concordium-client contract update 0 --func my_parameter_receive \
