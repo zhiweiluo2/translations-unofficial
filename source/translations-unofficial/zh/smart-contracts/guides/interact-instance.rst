@@ -9,13 +9,13 @@
 制备
 ===========
 
-确保您正在使用最新的Concordium软件<下载>运行一个节点<run-a-node>，并且要在链上检查智能合约实例。
+确保您正在使用最新的  :ref:`Concordium software<downloads>`  运行一个节点 :ref:`running a node<run-a-node>` ，并且要在链上检查智能合约实例。
 
 .. 也可以看看：：
-   有关如何部署智能合约模块的信息，请参见：deploy-module。
-   如何创建实例：初始化合同。
+   有关如何部署智能合约模块的信息，请参见：:ref:`deploy-module`  。
+   如何创建实例：:ref:`initialize-contract`.
 
-由于与智能合约的交互是交易，因此，您还应确保已concordium-client建立一个具有足够GTU的帐户来支付交易费用。
+由于与智能合约的交互是交易，因此，您还应确保已 ``concordium-client`` 建立一个具有足够 GTU 的帐户来支付交易费用。
 
 .. 注意::
 
@@ -24,7 +24,7 @@
 相互作用
 ===========
 
-要0使用无参数接收功能使用地址索引更新实例，my_receive同时允许使用多达1000个能量，请运行以下命令：
+要0使用无参数接收功能使用地址索引更新实例， ``my_receive`` 同时允许使用多达1000个能量，请运行以下命令：
 
 .. code-block:: console
 
@@ -39,15 +39,14 @@
 以JSON格式传递参数
 ---------------------------------
 
-如果提供了智能合约模式<contract-schema>作为文件或嵌入在模块中，则可以传递JSON格式的参数。该模式用于将JSON序列化为二进制。
+如果提供了 :ref:`smart contract schema <contract-schema>` 作为文件或嵌入在模块中，则可以传递JSON格式的参数。该模式用于将JSON序列化为二进制。
 
 .. 也可以看看：：
 
    阅读更多有关为什么以及如何使用智能合约模式的信息
    <contract-schema>`。
 
-要使用无参数接收函数my_receive更新地址索引为0的实例，同时允许使用多达1000个能量，请运行以下命令：
-
+要 0 使用 ``my_parameter_receive`` 具有 ``my_parameter.json`` 格式参数文件的 receive 函数 ，通过地址索引更新实例，请运行以下命令：
 .. code-block:: console
 
    $concordium-client contract update 0 --func my_parameter_receive \
@@ -94,7 +93,7 @@
 
 当以二进制格式传递参数时， 不需要合约模式<contract-schema>。
 
-要0使用my_parameter_receive带有my_parameter.bin二进制格式的参数文件的接收函数 ，通过地址索引更新实例，请运行以下命令：
+要 0 使用 ``my_parameter_receive`` 带有 ``my_parameter.bin`` 二进制格式的参数文件的接收函数 ，通过地址索引更新实例，请运行以下命令：
 
 .. code-block:: console
 
