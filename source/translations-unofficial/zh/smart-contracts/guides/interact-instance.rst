@@ -62,14 +62,15 @@
 
 否则，将显示描述问题的错误。下一节将介绍常见错误。
 
-.. 也可以看看：：
+.. seealso::
 
-   有关合同实例地址的更多信息，请参见
-   参考链上的参考
+   For more information about contract instance addresses, see
+   :ref:`references-on-chain`.
+
    
-.. 注意::
+.. note::
 
-   如果以JSON格式提供的参数不符合架构中指定的类型，则将显示错误消息。例如：
+  如果以JSON格式提供的参数不符合架构中指定的类型，则将显示错误消息。例如：
 
     .. code-block:: console
 
