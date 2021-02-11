@@ -29,14 +29,14 @@
    [dependencies]
    concordium-std = { version: "=0.2", default-features = false }
 
-为了能够在有和没有 ``std`` 之间切换，还 ``std`` 可以在自己的模块中添加a ，以启用以下 ``std`` 功能 ``concordium-std`` ：
+为了能够在有和没有 ``std`` 之间切换， ``std`` 还可以在自己的模块中添加a ，以启用以下 ``std`` 功能 ``concordium-std`` ：
 
 .. code-block:: rust
 
    [features]
    std = ["concordium-std/std"]
 
-这是智能合约示例的设置，其中std默认情况下启用了每个智能合约模块。
+这是智能合约示例的设置，其中 ``std`` 默认情况下启用了每个智能合约模块。
 
 构建模块
 ===================
