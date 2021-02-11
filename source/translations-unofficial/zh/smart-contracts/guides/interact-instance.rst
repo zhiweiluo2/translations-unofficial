@@ -39,12 +39,12 @@
 以JSON格式传递参数
 ---------------------------------
 
-如果提供了 :ref:`smart contract schema <contract-schema>` 作为文件或嵌入在模块中，则可以传递JSON格式的参数。该模式用于将JSON序列化为二进制。
+如果提供了 :ref:`smart contract schema <contract-schema>` 作为文件或嵌入在模块中，则可以传递 JSON格式的参数。该模式用于将 JSON序列化为二进制。
 
 .. 也可以看看：：
 
-   阅读更多有关为什么以及如何使用智能合约模式的信息
-   <contract-schema>`。
+   :ref:`Read more about why and how to use smart contract schemas
+   <contract-schema>`.
 
 要 0 使用 ``my_parameter_receive`` 具有 ``my_parameter.json`` 格式参数文件的 receive 函数 ，通过地址索引更新实例，请运行以下命令：
 
@@ -65,6 +65,7 @@
 ..另
 
    请参见
+
    ：有关合同实例地址的更多信息，请参阅 :ref:`references-on-chain`.
 
    
@@ -84,16 +85,16 @@
 
 .. 注意::
 
-   如果给定的模块不包含嵌入式模式，则可以使用--schema /path/to/schema.bin参数提供它。
+   如果给定的模块不包含嵌入式模式，则可以使用 ``--schema /path/to/schema.bin`` 参数提供它。
    
 .. 注意::
 
-   在更新期间，也可以使用--amount AMOUNT参数将GTU转移到合同中 。
+   在更新期间，也可以使用 ``--amount AMOUNT`` 参数将GTU转移到合同中 。
 
 以二进制格式传递参数
 -----------------------------------
 
-当以二进制格式传递参数时， 不需要合约模式<contract-schema>。
+当以二进制格式传递参数时， 不需要 :ref:`contract schema <contract-schema>`。
 
 要 0 使用 ``my_parameter_receive`` 带有 ``my_parameter.bin`` 二进制格式的参数文件的接收函数 ，通过地址索引更新实例，请运行以下命令：
 
