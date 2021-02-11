@@ -6,7 +6,7 @@
 创建一个智能合约工程
 ===================================
 
-Rust中的智能合约被编写为普通的Rust库crate。然后通过设置Rust ``wasm32-unknown-unknown`` 目标将该库编译为Wasm，由于它只是一个Rust库，因此我们可以使用 Cargo_ 进行依赖管理。
+Rust中的智能合约被编写为普通的Rust库crate, 然后通过设置Rust的 ``wasm32-unknown-unknown`` 目标将该库编译为Wasm. 由于智能合约只是一个Rust库，因此我们可以使用 Cargo_ 进行依赖管理。
 
 要创建新的智能合约工程，请首先创建一个工程目录。在工程目录中，在终端中运行以下命令：
 
@@ -35,7 +35,7 @@ Rust中的智能合约被编写为普通的Rust库crate。然后通过设置Rust
 
 .. 注意::
 
-如果您想使用此crate的修改版，则必须通过将以下内容添加到 ``Cargo.toml`` 来克隆这个依赖 ``concordium-std`` 的库，并令依赖指向此目录:
+   如果您想使用此crate的修改版，则必须通过将以下内容添加到 ``Cargo.toml`` 来克隆这个依赖 ``concordium-std`` 的库，并令依赖指向此目录:
    
       [dependencies]
       concordium-std = { path = "./path/to/concordium-std" }
