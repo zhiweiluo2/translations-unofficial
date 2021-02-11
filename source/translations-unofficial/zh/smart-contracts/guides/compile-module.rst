@@ -8,17 +8,16 @@
 编译Rust智能合约模块
 ====================================
 
-本指南将向您展示如何将用Rust编写的智能合约模块编译为Wasm模块。
+本指南将向您展示如何将用Rust编写的智能合约模块并编译为Wasm模块。
 
-制备
+准备工作
 ===========
 
-确保已安装Rust和 ``wasm32-unknown-unknown`` ， ``cargo-concordium``  并且要编译目标，目标以及智能合约模块的Rust源代码。
+确保已安装Rust和Cargo以及配置了 ``wasm32-unknown-unknown`` 和准备好了 ``cargo-concordium``  以及你希望编译的智能合约模块的Rust源代码。
 
 .. 也可以看看：：
 
-   有关如何安装开发人员工具的说明，请参见
-   设置工具
+   有关如何安装开发人员工具的说明，请参见 :ref:`setup-tools` 
 
 编译为Wasm
 =================
@@ -35,8 +34,7 @@
 
 .. 也可以看看：：
 
-   为了构建智能合约模块的架构，请参考
-   需要准备<build-schema>`。
+   为了构建智能合约模块的架构，请参考 :ref:`further preparation is required <build-schema>` .
 
 .. 注意::
 
@@ -46,13 +44,13 @@
 
       $cargo build --target=wasm32-unknown-unknown [--release]
 
-   请注意，即使已 ``--release`` 设置，产生的Wasm模块也包含调试信息。
+   请注意，即使设置了 ``--release`` ，产生的Wasm模块也包含调试信息。
    
 
 从构建中删除主机信息
 ====================================
 
-编译后的Wasm模块可以包含来自构建二进制文件的主机的信息。信息，例如 ``.cargo`` 目录的绝对路径。
+编译后的Wasm模块会包含来自构建二进制文件的主机的信息。例如 ``.cargo`` 目录的绝对路径。
 
 对于大多数人来说，这不是敏感信息，但重要的是要意识到这一点。
 
@@ -66,15 +64,15 @@
 
 理想的解决方案是完全删除该路径，但是不幸的是，这通常不是一件容易的事。
 
-``--remap-path-prefix`` 编译合同时可以通过使用标志来解决此问题。在类Unix的系统上，可以 ``cargo concordium`` 使用  ``RUSTFLAGS`` 环境变量将标志直接传递给调用：
+不过，编译合约时可以通过使用 ``--remap-path-prefix`` 指示项来解决此问题。在类Unix的系统上，可以通过 ``RUSTFLAGS`` 环境变量将此指示项直接传递到 ``cargo concordium`` 的调用中：
 
 .. code-block:: console
 
    $RUSTFLAGS="--remap-path-prefix=$HOME=" cargo concordium build
 
-它将用空字符串替换用户的主路径。其他路径可以以类似方式映射。通常，using  ``--remap-path-prefix=from=to`` 将映射 ``from`` 到  ``to`` 任何嵌入式路径的开头。
+它将用空字符串替换用户的主路径。其他路径可以以类似方式映射。通常，使用 ``--remap-path-prefix=from=to`` 会在任何嵌入式路径的开头处映射 ``from`` 成 ``to`` 。
 
-也可以 ``.cargo/config`` 在构建部分下的箱子中的文件中永久设置该标志：
+也可以在crate中的 ``.cargo/config`` 文件中的构建部分下永久设置该指示项：
 
 .. code-block:: toml
 
@@ -86,9 +84,9 @@
 注意事项
 -------
 
-如果 ``rust-src`` 为Rust工具链安装了组件，则以上内容可能无法解决该问题。一些Rust工具（例如 rust-analyzer_.）需要此组件。
+如果我们为Rust工具链安装了 ``rust-src`` 组件，则以上内容可能无法解决该问题。但一些Rust工具（例如 rust-analyzer_ ）的确需要此组件。
 
 .. 另::
 
-   一个报告--remap-path-prefix和rust-src问题的问题
+   一个关于 ``--remap-path-prefix`` 和 ``rust-src`` 问题的报告：
    https://github.com/rust-lang/rust/issues/73167
