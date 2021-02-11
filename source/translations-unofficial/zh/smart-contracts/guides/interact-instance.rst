@@ -62,13 +62,13 @@
 
 否则，将显示描述问题的错误。下一节将介绍常见错误。
 
-.. seealso::
+..另
 
-   For more information about contract instance addresses, see
-   :ref:`references-on-chain`.
+   请参见
+   ：有关合同实例地址的更多信息，请参阅 :ref:`references-on-chain`.
 
    
-.. note::
+.. 注意::
 
   如果以JSON格式提供的参数不符合架构中指定的类型，则将显示错误消息。例如：
 
@@ -112,7 +112,7 @@
 .. 也可以看看：：
 
    有关如何在智能合约中使用参数的信息，请参阅
-   参考参数。
+   :ref:`working-with-parameters`.
 
 .. _parameter_cursor():
    https://docs.rs/concordium-std/latest/concordium_std/trait.HasInitContext.html#tymethod.parameter_cursor
