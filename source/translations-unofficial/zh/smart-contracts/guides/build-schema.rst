@@ -61,19 +61,19 @@
 包括功能参数
 -----------------------------
 
-要生成并包含用于初始化和接收函数的参数的模式，我们为 ``#[init(..)]`` -和 ``#[receive(..)]`` -宏设置了可选的 ``parameter`` 属性： ：
- 
-  #[derive(SchemaType)]
-enum InitParameter { ... }
+要生成并包含用于初始化和接收函数的参数的模式，我们为 ``#[init(..)]`` -和 ``#[receive(..)]`` -宏设置了可选的 ``parameter`` 属性 ::
 
-#[derive(SchemaType)]
-enum ReceiveParameter { ... }
+   #[derive(SchemaType)]
+   enum InitParameter { ... }
 
-#[init(contract = "my_contract", parameter = "InitParameter")]
-fn contract_init<...> (...){ ... }
+   #[derive(SchemaType)]
+   enum ReceiveParameter { ... }
 
-#[receive(contract = "my_contract", name = "my_receive", parameter = "ReceiveParameter")]
-fn contract_receive<...> (...){ ... }
+   #[init(contract = "my_contract", parameter = "InitParameter")]
+   fn contract_init<...> (...){ ... }
+
+   #[receive(contract = "my_contract", name = "my_receive", parameter = "ReceiveParameter")]
+   fn contract_receive<...> (...){ ... }
 
 
 建立架构
