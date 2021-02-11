@@ -99,11 +99,11 @@
            "second_field": 42
        }.
 
-.. 注意::
+.. note::
 
    如果给定的模块不包含嵌入式模式，则可以使用 ``--schema /path/to/schema.bin`` 参数提供它。
 
-.. 注意::
+.. note::
 
    GTU也可以在初始化期间使用 ``--amount AMOUNT`` 参数转移到合同实例。
 
