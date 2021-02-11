@@ -76,10 +76,10 @@
 
 现在，我们准备使用来构建实际的模式 ``cargo-concordium`` ，并且可以选择嵌入模式和/或将模式写入文件。
 
-.. 也可以看看：：
+.. 另::
 
    有关更多选择的信息，请参见
-:ref:`here<contract-schema-which-to-choose>`.
+   :ref:`here<contract-schema-which-to-choose>`.
 
 嵌入架构
 --------------------
