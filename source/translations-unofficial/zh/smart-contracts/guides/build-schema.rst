@@ -41,7 +41,7 @@
 ------------------------
 
 为了生成并包括合同状态的模式，我们用 ``#[contract_state(contract = ...)]`` 宏注释类型：
-
+ 
    #[contract_state(contract = "my_contract")]
    #[derive(SchemaType)]
    struct MyState {
