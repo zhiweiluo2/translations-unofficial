@@ -60,7 +60,7 @@
 
    strings contract.wasm | grep /home/
 
-.. rubric:: 解决方案
+.. rubric:: 解决方案：
 
 理想的解决方案是完全删除该路径，但是不幸的是，这通常不是一件容易的事。
 
