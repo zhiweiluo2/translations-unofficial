@@ -79,7 +79,6 @@
 .. 另::
 
    有关更多选择的信息，请参见
-
 :ref:`here<contract-schema-which-to-choose>`.
 
 嵌入架构
