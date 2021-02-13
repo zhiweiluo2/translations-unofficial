@@ -13,7 +13,7 @@
 
 .. 另
    请参阅：有关如何部署智能合约模块的信息，请参见： :ref:`deploy-module` ，以及
-   如何创建实例 `` :ref:`initialize-contract` ``.
+   如何创建实例 :ref:`initialize-contract` .
 
 检查
 ==========
