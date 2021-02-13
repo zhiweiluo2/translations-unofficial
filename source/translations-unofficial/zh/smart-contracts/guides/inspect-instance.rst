@@ -55,4 +55,4 @@
 
 .. 另::
   
-  :ref:`Read more about why and how to use smart contract schemas <contract-schema>` .
+  ：参考：`了解更多关于为什么和如何使用智能合同模式`<contract-schema>` .
