@@ -11,6 +11,7 @@
 
 确保您正在使用最新的 :ref:`Concordium software<downloads>` 运行一个节点 :ref:`running a node<run-a-node>`，并且要在链上检查智能合约实例。
 
+
 .. 另
    请参阅：有关如何部署智能合约模块的信息，请参见： :ref:`deploy-module` ，以及
    如何创建实例 :ref:`initialize-contract` .
