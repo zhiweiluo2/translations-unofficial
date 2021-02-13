@@ -47,12 +47,11 @@
    ：有关合同实例地址的更多信息，请参阅 :ref:`references-on-chain` 。
 
 
-检查的详细程度取决于 ``show`` 命令是否可以访问 :ref:`contract schema <contract-schema>` 。如果架构是嵌入式的，则将隐式使用它。否则，可以使用 ``--schema /path/to/schema.bin``  参数提供架构。
+检查的详细程度取决于 ``show`` 命令是否可以访问 :ref:`contract schema <contract-schema>` 。如果架构是嵌入的，它将被隐式使用。否则，可以使用 ``--schema /path/to/schema.bin``  参数提供架构。
 
 .. 注意::
 
    使用 ``--schema`` 参数提供的模式文件将优先于嵌入式模式。
 
 .. 另::
-
-   :ref:`Read more about why and how to use smart contract schemas <contract-schema>` .
+:ref:`Read more about why and how to use smart contract schemas <contract-schema>` .
