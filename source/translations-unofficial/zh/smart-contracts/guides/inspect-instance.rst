@@ -54,4 +54,5 @@
    使用 ``--schema`` 参数提供的模式文件将优先于嵌入式模式。
 
 .. 另::
-:ref:`Read more about why and how to use smart contract schemas <contract-schema>` .
+  
+  :ref:`Read more about why and how to use smart contract schemas <contract-schema>` .
