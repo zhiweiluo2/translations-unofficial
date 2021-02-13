@@ -12,14 +12,13 @@
 确保您正在使用最新的 :ref:`Concordium software<downloads>` 运行一个节点 :ref:`running a node<run-a-node>`，并且要在链上检查智能合约实例。
 
 .. 另
-   请参阅：有关如何部署智能合约模块的信息，请参见：
-:ref:`initialize-contract` ，
-   以及如何创建实例的初始化协议。
+   请参阅：有关如何部署智能合约模块的信息，请参见： :ref:`deploy-module` ，以及
+   如何创建实例 `` :ref:`initialize-contract` ``.
 
 检查
 ==========
 
-要检查或显示有关具有地址索引的智能合约实例的信息0，请运行以下命令：
+检查或显示有关智能合约实例的信息地址索引 ``0``，运行以下命令：
 
 .. code-block:: console
 
